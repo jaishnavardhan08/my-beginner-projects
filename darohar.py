@@ -180,7 +180,7 @@ places = pd.read_csv(PLACE_FILE)
 # ============================================================
 
 root = tk.Tk()
-root.title("Dharohar - Smart Travel Assistant")
+root.title("Darohar - Smart Travel Assistant")
 root.geometry("950x700")
 root.minsize(850, 600)
 
@@ -238,7 +238,7 @@ def language_screen():
 
     tk.Label(
         root,
-        text="✈️ Dharohar",
+        text="✈️ Darohar",
         font=("Arial", 30, "bold"),
         bg=BG
     ).pack(pady=(100, 10))
@@ -286,7 +286,7 @@ def home_screen():
 
     clear_window()
 
-    heading("✈️ Dharohar")
+    heading("✈️ Darohar")
 
     tk.Label(
         root,
@@ -989,10 +989,10 @@ def about_screen():
 
     clear_window()
 
-    heading("ℹ️ About Dharohar")
+    heading("ℹ️ About Darohar")
 
     text = """
-Dharohar is a smart travel assistant designed
+Darohar is a smart travel assistant designed
 to make travelling more personal and meaningful.
 
 It considers:
