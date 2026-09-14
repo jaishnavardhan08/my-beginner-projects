@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dharohar — One Seamless Website</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;background:#111127;overflow:hidden}
+    #app{width:100%;height:100%;position:relative;overflow:hidden;background:#111127}
+    .page{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease;}
+    .page.active{opacity:1;visibility:visible;pointer-events:auto;z-index:2}
+    #loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#111127;color:#ffc665;font-family:Arial,sans-serif;z-index:10;transition:opacity .2s}
+    #loading.hidden{opacity:0;pointer-events:none}
+    .loader{text-align:center}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#ffc665;margin:0 3px;animation:b 1s infinite alternate}.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}@keyframes b{to{transform:translateY(-6px);opacity:.35}}
+  </style>
+</head>
+<body>
+<div id="app">
+  <div id="loading"><div class="loader"><div style="font-size:30px;font-weight:700;margin-bottom:12px">DHAROHAR</div><div><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div></div>
+  <iframe class="page" id="signin" src="signin.html" title="Sign in"></iframe>
+  <iframe class="page" id="home" src="home.html" title="Dharohar Home"></iframe>
+  <iframe class="page" id="plan" src="plan.html" title="Plan your trip"></iframe>
+  <iframe class="page" id="hotel" src="hotel.html" title="Register residence"></iframe>
+  <iframe class="page" id="quiz" src="quiz.html" title="Culture quiz"></iframe>
+  <iframe class="page" id="about" src="about.html" title="About Dharohar"></iframe>
+</div>
+<script>
+(function(){
+  const pages={signin:'signin',home:'home',plan:'plan',hotel:'hotel',quiz:'quiz',about:'about'};
+  let current='signin';
+  window.__dharoharNavigate = show;
+
+  function show(name){
+    name=pages[name]?name:'home';
+    current=name;
+    Object.keys(pages).forEach(k=>document.getElementById(pages[k]).classList.toggle('active',k===name));
+    history.replaceState({page:name},'', '#'+name);
+    const frame=document.getElementById(name);
+    if(frame && frame.contentDocument) frame.contentDocument.documentElement.scrollTop=0;
+  }
+
+  function routeFromElement(el){
+    if(!el) return null;
+    const path=(el.getAttribute('data-path')||'').toLowerCase();
+    if(path==='hub') return 'home';
+    if(path==='trips') return 'plan';
+    if(path==='host') return 'hotel';
+    if(path==='profile-about') return 'about';
+    if(path==='about-us') return 'home';
+    const text=(el.innerText||el.textContent||'').trim().replace(/\s+/g,' ').toLowerCase();
+    if(text.includes('register residence')||text.includes('register your property')||text.includes('register property')) return 'hotel';
+    if(text.includes('book a cultural passage')||text==='browse'||text.includes('plan your trip')||text.includes('plan my trip')) return 'plan';
+    if(text.includes('play game')||text.includes('culture quiz')||text.includes('quiz')) return 'quiz';
+    if(text.includes('about us')||text.includes('explore story')) return 'about';
+    if(text==='sign in'||text.includes('enter dharohar')) return 'signin';
+    return null;
+  }
+
+  function wire(frame){
+    try{
+      const doc=frame.contentDocument;
+      if(!doc) return;
+      doc.addEventListener('click',function(e){
+        const el=e.target.closest('a,button');
+        if(!el) return;
+        const target=routeFromElement(el);
+        const href=(el.getAttribute('href')||'').toLowerCase();
+        if(target || ['home.html','plan.html','hotel.html','quiz.html','about.html','signin.html'].some(x=>href.endsWith(x))){
+          e.preventDefault(); e.stopImmediatePropagation();
+          if(target) show(target);
+          else if(href.includes('home.html')) show('home');
+          else if(href.includes('plan.html')) show('plan');
+          else if(href.includes('hotel.html')) show('hotel');
+          else if(href.includes('quiz.html')) show('quiz');
+          else if(href.includes('about.html')) show('about');
+          else show('signin');
+        }
+      },true);
+      doc.addEventListener('submit',function(e){
+        e.preventDefault(); e.stopImmediatePropagation();
+        show('home');
+      },true);
+      frame.dataset.wired='1';
+    }catch(err){ console.log('Dharohar router:',err); }
+  }
+
+  document.querySelectorAll('.page').forEach(frame=>{
+    frame.addEventListener('load',()=>wire(frame));
+  });
+
+  window.addEventListener('popstate',()=>show((location.hash||'#signin').slice(1)));
+
+  let ready=0;
+  document.querySelectorAll('.page').forEach(f=>f.addEventListener('load',()=>{
+    ready++;
+    if(ready>=1){document.getElementById('loading').classList.add('hidden'); show((location.hash||'#signin').slice(1));}
+  }));
+})();
+</script>
+</body>
+</html>
