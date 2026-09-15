@@ -1,16 +1,18 @@
-## Hi there 👋
+# Dharohar Website
 
-<!--
-**jaishnavardhan08/jaishnavardhan08** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+This is a static website assembled from the supplied Dharohar frontend screens.
 
-Here are some ideas to get you started:
+Start with `index.html`.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Main routes:
+- `index.html` — Dharohar hub
+- `plan.html` — Browse / plan a cultural passage
+- `quiz.html` — Cultural traditions quiz
+- `about.html` — About Dharohar
+- `signin.html` — Sign in / sign up
+- `language.html` — Language selection
+- `curated.html` — Curated haveli sanctuaries
+- `booking.html` — Sanctuary booking
+- `register.html` — Register a residence
+
+No build step is required. Open `index.html` directly in a browser, or serve this folder with any static web server.

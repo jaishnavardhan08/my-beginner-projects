@@ -1,0 +1,1393 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Dharohar - Cultural Traditions &amp; Region Quiz</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#141120",
+            "surface-dim": "#0f0c1b",
+            "surface-container": "#1d1929",
+            "surface-container-high": "#282337",
+            "surface-container-highest": "#342e47",
+            primary: "#e6a73c",
+            "primary-container": "#64460c",
+            "on-primary": "#2b1700",
+            tertiary: "#f3c267",
+            secondary: "#ff8c53",
+            "on-surface": "#f5f0ff",
+            "on-surface-variant": "#c9bfdb",
+            outline: "#857c96",
+            "tile-red": "#e11d48",
+            "tile-blue": "#2563eb",
+            "tile-amber": "#d97706",
+            "tile-green": "#059669"
+          },
+          fontFamily: {
+            serif: ["'Playfair Display'", "serif"],
+            sans: ["'Plus Jakarta Sans'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      background-color: #141120;
+      color: #f5f0ff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overscroll-behavior: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .pb-safe { padding-bottom: max(env(safe-area-inset-bottom, 16px), 16px); }
+    .pt-safe { padding-top: max(env(safe-area-inset-top, 16px), 16px); }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-surface selection:bg-primary selection:text-on-primary">
+<main class="w-full max-w-md mx-auto flex-1 flex flex-col pt-safe pb-safe px-4 relative">
+<!-- ============================================== -->
+<!-- ACTIVE PATRON WALLET VOUCHER BAR (STICKY TOP)   -->
+<!-- ============================================== -->
+<div class="hidden mb-3 p-2.5 rounded-xl bg-gradient-to-r from-primary/20 via-surface-container to-surface-container border border-primary/40 shadow-md" id="active-voucher-banner">
+<div class="flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-7 h-7 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-sm">confirmation_number</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="text-[9px] uppercase tracking-wider font-bold text-tertiary">Active Patron Voucher</span>
+<span class="text-[8px] px-1.5 py-0.2 rounded bg-primary/20 text-primary font-mono font-bold">LATEST ONLY</span>
+</div>
+<div class="text-xs font-mono font-bold text-on-surface truncate">
+<span class="text-primary" id="banner-voucher-code">DHAROHAR00</span> • <span class="text-emerald-400" id="banner-voucher-pct">0% OFF</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] text-outline text-right leading-tight whitespace-nowrap">Single Active<br>Booking Rule</span>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- VIEW 1: REGION SELECTOR                        -->
+<!-- ============================================== -->
+<div class="flex flex-col flex-1 hidden" id="view-region-select">
+<!-- Header -->
+<header class="flex items-center justify-between py-3 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">temple_hindu</span>
+</div>
+<div>
+<h1 class="font-serif font-bold text-lg text-on-surface leading-tight">DHAROHAR: Carrying Indian Legacies</h1>
+<p class="text-[10px] text-primary uppercase tracking-widest font-semibold">Culture &amp; Heritage Quiz</p>
+</div>
+</div>
+</header>
+<!-- Welcome Banner -->
+<div class="pt-5 pb-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-semibold mb-2">
+<span class="material-symbols-outlined text-sm">explore</span>
+<span>STEP 1 • CHOOSE YOUR ROOTS</span>
+</div>
+<h2 class="font-serif text-2xl font-bold text-on-surface leading-tight">
+          Where do you want to test your cultural wits?
+        </h2>
+<p class="text-xs text-on-surface-variant mt-1.5">
+          Select an iconic region below. Each cultural quiz can only be played <strong>once</strong>, and winning a new voucher overwrites previous discounts.
+        </p>
+</div>
+<!-- Region Cards List (Dynamically hydrated to show locked/completed states) -->
+<div class="flex flex-col gap-3 pb-6 flex-1" id="region-cards-container">
+<!-- Rajasthan -->
+<button class="group relative text-left p-3.5 rounded-2xl bg-surface-container hover:bg-surface-container-high active:scale-[0.98] border border-surface-container-highest hover:border-primary/60 transition-all flex items-center gap-3.5 shadow-lg" id="region-card-rajasthan" onclick="handleRegionCardClick('rajasthan')">
+<div class="w-13 h-13 p-3 rounded-xl bg-primary/10 border border-primary/30 text-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform" id="icon-rajasthan">
+            🏰
+          </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-serif font-bold text-base text-on-surface group-hover:text-primary transition-colors">Rajasthan</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary font-bold" id="badge-rajasthan">10 Qs</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate mt-0.5" id="desc-rajasthan">Dal Baati Churma, Padharo Mhare Desh, Ghoomar &amp; Pithi</p>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-tertiary" id="sub-rajasthan">
+<span>● Food, Wedding Rituals &amp; Dialect</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-0.5 transition-all text-xl" id="arrow-rajasthan">chevron_right</span>
+</button>
+<!-- Punjab -->
+<button class="group relative text-left p-3.5 rounded-2xl bg-surface-container hover:bg-surface-container-high active:scale-[0.98] border border-surface-container-highest hover:border-primary/60 transition-all flex items-center gap-3.5 shadow-lg" id="region-card-punjab" onclick="handleRegionCardClick('punjab')">
+<div class="w-13 h-13 p-3 rounded-xl bg-secondary/10 border border-secondary/30 text-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform" id="icon-punjab">
+            🌾
+          </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-serif font-bold text-base text-on-surface group-hover:text-primary transition-colors">Punjab</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-secondary/20 text-secondary font-bold" id="badge-punjab">10 Qs</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate mt-0.5" id="desc-punjab">Makki di Roti, Jaggo Night, Balle Balle &amp; Joota Chupai</p>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-tertiary" id="sub-punjab">
+<span>● Winter Delicacies, Boliyan &amp; Celebrations</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-0.5 transition-all text-xl" id="arrow-punjab">chevron_right</span>
+</button>
+<!-- Kerala -->
+<button class="group relative text-left p-3.5 rounded-2xl bg-surface-container hover:bg-surface-container-high active:scale-[0.98] border border-surface-container-highest hover:border-primary/60 transition-all flex items-center gap-3.5 shadow-lg" id="region-card-kerala" onclick="handleRegionCardClick('kerala')">
+<div class="w-13 h-13 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform" id="icon-kerala">
+            🌴
+          </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-serif font-bold text-base text-on-surface group-hover:text-primary transition-colors">Kerala &amp; Malabar</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold" id="badge-kerala">10 Qs</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate mt-0.5" id="desc-kerala">Grand Onam Sadhya, 'Chaya Kudicho?', Kasavu &amp; Boat Race</p>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-tertiary" id="sub-kerala">
+<span>● Banana Leaf Feasts &amp; Backwater Culture</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-0.5 transition-all text-xl" id="arrow-kerala">chevron_right</span>
+</button>
+<!-- Varanasi & Awadh -->
+<button class="group relative text-left p-3.5 rounded-2xl bg-surface-container hover:bg-surface-container-high active:scale-[0.98] border border-surface-container-highest hover:border-primary/60 transition-all flex items-center gap-3.5 shadow-lg" id="region-card-awadh" onclick="handleRegionCardClick('awadh')">
+<div class="w-13 h-13 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform" id="icon-awadh">
+            🪔
+          </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-serif font-bold text-base text-on-surface group-hover:text-primary transition-colors">Varanasi &amp; Awadh</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 font-bold" id="badge-awadh">10 Qs</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate mt-0.5" id="desc-awadh">Banarasi Paan, Tehzeeb, Shehnai &amp; Galouti Kebabs</p>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-tertiary" id="sub-awadh">
+<span>● Ganga Ghat Culture, Tehzeeb &amp; Sweets</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-0.5 transition-all text-xl" id="arrow-awadh">chevron_right</span>
+</button>
+<!-- Bengal & East -->
+<button class="group relative text-left p-3.5 rounded-2xl bg-surface-container hover:bg-surface-container-high active:scale-[0.98] border border-surface-container-highest hover:border-primary/60 transition-all flex items-center gap-3.5 shadow-lg" id="region-card-bengal" onclick="handleRegionCardClick('bengal')">
+<div class="w-13 h-13 p-3 rounded-xl bg-pink-500/10 border border-pink-500/30 text-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform" id="icon-bengal">
+            🪕
+          </div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-serif font-bold text-base text-on-surface group-hover:text-primary transition-colors">Bengal &amp; East</span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-400 font-bold" id="badge-bengal">10 Qs</span>
+</div>
+<p class="text-xs text-on-surface-variant truncate mt-0.5" id="desc-bengal">Spongy Rosogolla, Shubho Drishti, Mishti Doi &amp; Kemon Acho</p>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-tertiary" id="sub-bengal">
+<span>● Pujo Festivities, Adda &amp; Sweet Traditions</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-0.5 transition-all text-xl" id="arrow-bengal">chevron_right</span>
+</button>
+</div>
+<!-- Locked Fair Play Notice -->
+<div class="p-3 rounded-xl bg-surface-container-high border border-primary/20 flex items-start gap-2.5 mt-auto mb-2">
+<span class="material-symbols-outlined text-primary text-xl flex-shrink-0">gavel</span>
+<div class="text-[11px] text-outline leading-relaxed">
+<strong class="text-on-surface font-semibold">Patron Fairness &amp; Voucher Overwrite Rule:</strong> Each regional trial can only be attempted <em>once per patron</em>. Completing a new quiz awards a new voucher that instantly replaces any previous voucher code.
+</div>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- VIEW 2: LIVE KAHOOT QUIZ ARENA                 -->
+<!-- ============================================== -->
+<div class="flex-col flex-1 pb-4 flex" id="view-quiz-arena">
+<!-- Quiz HUD Top Bar -->
+<header class="py-2 flex items-center justify-between border-b border-surface-container-high">
+<!-- Region back badge -->
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high border border-primary/30 text-tertiary transition-colors active:scale-95" onclick="returnToRegionSelect()">
+<span class="material-symbols-outlined text-xs">arrow_back</span>
+<span class="text-xs font-bold font-serif" id="hud-region-name">Bengal &amp; East</span>
+</button>
+<!-- Streak, Audio & Voucher Badges -->
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-secondary text-xs font-bold">
+<span>🔥</span>
+<span id="hud-streak">0 STREAK</span>
+</div>
+<button aria-label="Toggle Sound" class="w-7 h-7 rounded-full bg-surface-container hover:bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary text-xs transition-colors">
+<span class="material-symbols-outlined text-sm">volume_up</span>
+</button>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/30">
+<span class="material-symbols-outlined text-xs">savings</span>
+<span id="hud-discount">VOUCHER: 0% OFF</span>
+</div>
+</div>
+</header>
+<!-- Question Counter & Score -->
+<div class="pt-3 pb-2 flex items-center justify-between">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-outline" id="hud-sub-realm">Cultural Quiz</span>
+<h2 class="text-sm font-bold text-primary font-serif" id="hud-q-number">Question 1 of 10</h2>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase tracking-widest text-outline">Score</span>
+<div class="text-base font-bold text-primary font-serif">
+  SCORE: <span id="hud-score">0</span> <span class="text-[11px] text-tertiary">PTS</span>
+</div>
+</div>
+</div>
+<!-- Glowing Progress Bar -->
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden mb-3">
+<div class="h-full bg-gradient-to-r from-primary via-tertiary to-secondary transition-all duration-300 rounded-full" id="quiz-progress-bar" style="width: 10%;"></div>
+</div>
+<!-- Timer Status -->
+<div class="flex items-center justify-between mb-3 px-1">
+<div class="flex items-center gap-2">
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="w-8 h-8 -rotate-90" viewBox="0 0 36 36">
+<circle class="stroke-surface-container-highest" cx="18" cy="18" fill="none" r="15" stroke-width="3"></circle>
+<circle class="stroke-primary transition-all duration-1000 ease-linear" cx="18" cy="18" fill="none" id="timer-ring-circle" r="15" stroke-dasharray="94.2" stroke-dashoffset="0" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-xs font-bold text-primary" id="timer-number">20</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[9px] uppercase tracking-wider text-outline">Time Remaining</span>
+<span class="text-[11px] font-semibold text-on-surface" id="timer-status-text">Take your time</span>
+</div>
+</div>
+<span class="text-[10px] text-outline italic">One-time attempt per region</span>
+</div>
+<!-- Question Card -->
+<div class="p-4 rounded-2xl bg-surface-container border border-surface-container-high shadow-xl flex flex-col gap-2 relative overflow-hidden mb-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-md bg-surface-container-high text-tertiary text-[10px] font-bold uppercase tracking-wider" id="q-category-tag">SWEET BENGALI PHRASE</span>
+<span class="text-[11px] text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">local_activity</span>
+<span>Culture &amp; Joy</span>
+</span>
+</div>
+<h3 class="font-serif text-base sm:text-lg font-bold text-on-surface leading-snug" id="q-question-text">What sweet, affectionate everyday greeting is asked by every Bengali grandmother or friend to enquire 'How are you?'</h3>
+<!-- Photo clue -->
+<div class="relative w-full h-28 rounded-xl overflow-hidden mt-1 bg-surface-dim">
+<img alt="Cultural clue visual" class="w-full h-full object-cover brightness-95 contrast-105" id="q-hero-img" src="https://lh3.googleusercontent.com/aida/AEtjO1Vg4uLeUtFcCJcZuQrEorwxixiMqIbdk5y9_rMZRQK3aLO5CXOZYCeza6x5kpFMUeWhFJmyGY6PYhfVBB7Mpq9ftdw3Gbfei2Yr3BNf2WcccRbqEcWGJ_gKkxXknWUa2Z_Nc6VK4fHYXYjLh16GR7T0gzjs4Nclu-niJYpUJRJqq3503fmHLzsJ8yFRN8iEeY1TORmtQpJtYIUaiSM_l8y3APK1UzOLkmG4vrFNgRXubhTQCzllCudfq53H">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2.5 right-2.5 flex items-center gap-1.5 text-tertiary text-[11px]">
+<span class="material-symbols-outlined text-xs">auto_awesome</span>
+<span class="truncate font-medium" id="q-hint-caption">The universal answer is 'Bhalo Achi!' (I am doing well).</span>
+</div>
+</div>
+</div>
+<!-- 4 Kahoot Answer Tiles: Strictly uniform font, padding, weights, and layout -->
+<div class="grid grid-cols-1 gap-2.5 flex-1" id="options-container">
+<!-- Tile A (Triangle Red) -->
+<button class="option-tile group relative w-full text-left p-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest active:scale-[0.98] border border-transparent hover:border-tile-red/50 transition-all flex items-center gap-3 shadow-md" onclick="handleOptionChosen(0)">
+<div class="w-9 h-9 rounded-lg bg-tile-red text-white flex items-center justify-center font-bold text-base flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+  ▲
+</div>
+<div class="flex-1 min-w-0">
+<div class="text-[9px] uppercase tracking-wider text-tile-red font-bold">Option A</div>
+<div class="text-sm font-semibold text-on-surface truncate font-sans" id="tile-0-text">Kemon Acho?</div>
+</div>
+<span class="material-symbols-outlined text-outline/50 group-hover:text-primary transition-colors text-lg">touch_app</span>
+</button>
+<!-- Tile B (Diamond Blue) -->
+<button class="option-tile group relative w-full text-left p-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest active:scale-[0.98] border border-transparent hover:border-tile-blue/50 transition-all flex items-center gap-3 shadow-md" onclick="handleOptionChosen(1)">
+<div class="w-9 h-9 rounded-lg bg-tile-blue text-white flex items-center justify-center font-bold text-base flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+  ◆
+</div>
+<div class="flex-1 min-w-0">
+<div class="text-[9px] uppercase tracking-wider text-blue-400 font-bold">Option B</div>
+<div class="text-sm font-semibold text-on-surface truncate font-sans" id="tile-1-text">Ki Khobor?</div>
+</div>
+<span class="material-symbols-outlined text-outline/50 group-hover:text-primary transition-colors text-lg">touch_app</span>
+</button>
+<!-- Tile C (Circle Amber) -->
+<button class="option-tile group relative w-full text-left p-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest active:scale-[0.98] border border-transparent hover:border-tile-amber/50 transition-all flex items-center gap-3 shadow-md" onclick="handleOptionChosen(2)">
+<div class="w-9 h-9 rounded-lg bg-tile-amber text-white flex items-center justify-center font-bold text-base flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+  ●
+</div>
+<div class="flex-1 min-w-0">
+<div class="text-[9px] uppercase tracking-wider text-amber-400 font-bold">Option C</div>
+<div class="text-sm font-semibold text-on-surface truncate font-sans" id="tile-2-text">Kothay Jachho?</div>
+</div>
+<span class="material-symbols-outlined text-outline/50 group-hover:text-primary transition-colors text-lg">touch_app</span>
+</button>
+<!-- Tile D (Square Green) -->
+<button class="option-tile group relative w-full text-left p-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest active:scale-[0.98] border border-transparent hover:border-tile-green/50 transition-all flex items-center gap-3 shadow-md" onclick="handleOptionChosen(3)">
+<div class="w-9 h-9 rounded-lg bg-tile-green text-white flex items-center justify-center font-bold text-base flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+  ■
+</div>
+<div class="flex-1 min-w-0">
+<div class="text-[9px] uppercase tracking-wider text-emerald-400 font-bold">Option D</div>
+<div class="text-sm font-semibold text-on-surface truncate font-sans" id="tile-3-text">Bhalo Achen?</div>
+</div>
+<span class="material-symbols-outlined text-outline/50 group-hover:text-primary transition-colors text-lg">touch_app</span>
+</button>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- FULL-SCREEN FEEDBACK MODAL                     -->
+<!-- ============================================== -->
+<div class="fixed inset-0 z-50 bg-surface/95 backdrop-blur-md p-6 flex flex-col justify-between transition-opacity duration-300 opacity-0 hidden" id="modal-feedback">
+<!-- Glow effect -->
+<div class="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-primary/20 blur-3xl pointer-events-none" id="modal-glow"></div>
+<!-- Top info -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">temple_hindu</span>
+<span class="text-xs uppercase tracking-widest text-outline font-serif">Dharohar: Carrying Indian Legacies</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container text-tertiary text-xs font-bold" id="modal-q-badge">QUESTION 1 OF 10</span>
+</div>
+<!-- Middle Content -->
+<div class="relative z-10 flex flex-col items-center text-center my-auto py-2">
+<!-- Big outcome icon -->
+<div class="w-18 h-18 p-4 rounded-full flex items-center justify-center mb-3 shadow-2xl bg-tile-red/30 text-tile-red border border-tile-red/50" id="modal-icon-circle">
+<span class="material-symbols-outlined text-4xl" id="modal-icon-symbol">cancel</span>
+</div>
+<div class="text-xs uppercase tracking-widest font-bold text-tile-red mb-1" id="modal-tagline">GOOD TRY</div>
+<h2 class="font-serif text-2xl sm:text-3xl font-extrabold text-tile-red mb-2" id="modal-heading">HERE'S THE TRADITION</h2>
+<!-- Points & Voucher Reward Badges -->
+<div class="flex items-center gap-2 mb-2" id="modal-rewards-row">
+<div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container border border-primary/30 shadow" id="modal-score-pill">
+<span class="material-symbols-outlined text-primary text-sm">stars</span>
+<span class="text-xs font-bold text-primary" id="modal-earned-pts">+10 PTS</span>
+</div>
+<div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-surface-container border border-emerald-500/30 shadow" id="modal-voucher-pill">
+<span class="material-symbols-outlined text-emerald-400 text-sm">savings</span>
+<span class="text-xs font-bold text-emerald-400" id="modal-earned-voucher">+2% VOUCHER UNLOCKED</span>
+</div>
+</div>
+<!-- Streak notice -->
+<div class="text-xs font-bold text-secondary mb-3 flex items-center gap-1 hidden" id="modal-streak-note">
+<span>🔥</span>
+<span id="modal-streak-str">KEEP THE STREAK GOING!</span>
+</div>
+<!-- Correct answer reveal card -->
+<div class="w-full max-w-xs p-3 rounded-xl bg-surface-container border border-surface-container-high text-left shadow-md mb-2">
+<span class="text-[10px] text-outline uppercase tracking-wider">Tradition Answer:</span>
+<div class="flex items-center gap-2 text-on-surface text-sm font-bold mt-0.5">
+<span class="text-primary text-base" id="modal-reveal-symbol">▲</span>
+<span class="font-sans" id="modal-reveal-text">Kemon Acho?</span>
+</div>
+</div>
+<!-- Heartwarming Cultural Fact -->
+<div class="w-full max-w-xs p-3 rounded-xl bg-surface-dim border border-surface-container-high text-left flex gap-2">
+<span class="material-symbols-outlined text-tertiary text-base flex-shrink-0">menu_book</span>
+<p class="text-xs text-on-surface-variant leading-relaxed" id="modal-cultural-story">The melodious, rounded vowel sounds of the Bengali language make even simple greetings sound warmly musical.</p>
+</div>
+</div>
+<!-- Action button to advance -->
+<div class="relative z-10 w-full flex flex-col gap-2">
+<button class="w-full py-3.5 rounded-xl bg-gradient-to-r from-primary via-tertiary to-secondary text-on-primary font-bold text-sm shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2" id="btn-modal-next" onclick="goToNextQuestion()">
+<span id="btn-modal-next-text">NEXT QUESTION</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+<p class="text-center text-[11px] text-outline" id="modal-bottom-status">
+  Current Discount: 0% OFF (Answer all 10 to unlock up to 20% DHAROHAR voucher!)
+</p>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- FINAL PODIUM / REWARD SCREEN                    -->
+<!-- ============================================== -->
+<div class="fixed inset-0 z-50 bg-surface p-6 flex flex-col justify-between transition-opacity duration-500 opacity-0 hidden overflow-y-auto" id="modal-podium">
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-primary/20 blur-3xl pointer-events-none"></div>
+<header class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">military_tech</span>
+<span class="text-xs uppercase tracking-widest text-outline font-serif">Dharohar Honours</span>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase" id="podium-honor-pill">Culture Legend</span>
+</header>
+<div class="relative z-10 my-auto flex flex-col items-center text-center py-2">
+<div class="w-18 h-18 rounded-full bg-gradient-to-br from-primary to-secondary p-4 flex items-center justify-center shadow-2xl mb-2 text-on-primary">
+<span class="material-symbols-outlined text-4xl">workspace_premium</span>
+</div>
+<span class="text-xs uppercase tracking-widest font-bold text-tertiary">CULTURE CHAMPION</span>
+<h2 class="font-serif text-2xl font-bold text-on-surface my-1" id="podium-region-title">Heritage Champion</h2>
+<p class="text-xs text-on-surface-variant max-w-xs mb-3">
+  You conquered this regional tradition! Per patron rules, this region is now permanently marked completed.
+</p>
+<!-- Metrics Grid: 10 pts per question, max 100 PTS, 2% per question, max 20% -->
+<div class="grid grid-cols-3 gap-2 w-full max-w-xs mb-3">
+<div class="p-2.5 rounded-xl bg-surface-container flex flex-col items-center">
+<span class="text-[10px] text-outline uppercase">Score</span>
+<span class="font-serif text-base font-bold text-primary" id="podium-final-score">0/100</span>
+<span class="text-[9px] text-tertiary">PTS</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container flex flex-col items-center">
+<span class="text-[10px] text-outline uppercase">Accuracy</span>
+<span class="font-serif text-base font-bold text-secondary" id="podium-final-accuracy">0/10</span>
+<span class="text-[9px] text-secondary">CORRECT</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container flex flex-col items-center">
+<span class="text-[10px] text-outline uppercase">Voucher</span>
+<span class="font-serif text-base font-bold text-emerald-400" id="podium-final-voucher">0%</span>
+<span class="text-[9px] text-emerald-400">OFF STAY</span>
+</div>
+</div>
+<!-- ACTIVE FINAL VOUCHER CARD (Latest Earned) -->
+<div class="w-full max-w-xs p-3 rounded-2xl bg-surface-container-high border-2 border-primary shadow-xl flex flex-col gap-2 mb-2">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+<span class="text-primary font-bold tracking-wider text-[11px]">ACTIVE FINAL VOUCHER</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold" id="podium-voucher-badge">20% OFF</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-dim border border-primary/20">
+<div class="text-left">
+<span class="text-[9px] text-outline font-mono">ONLY VALID BOOKING CODE:</span>
+<div class="font-mono text-base font-bold text-primary tracking-wider" id="podium-promo-code">DHAROHAR20</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary text-xs font-bold hover:brightness-110 active:scale-95 transition-all" onclick="copyVoucherCode(this)">
+      COPY
+    </button>
+</div>
+<div class="flex items-start gap-1.5 text-[10px] text-primary/90">
+<span class="material-symbols-outlined text-xs flex-shrink-0 mt-0.5">info</span>
+<span><strong>Rule Enforced:</strong> This latest voucher replaces and supersedes any previous coupon. Only this code is now active in your wallet.</span>
+</div>
+</div>
+<!-- Superseded previous voucher callout (shown if user had prior voucher) -->
+<div class="w-full max-w-xs p-2 rounded-xl bg-surface-container border border-surface-container-highest flex items-center justify-between text-xs text-outline mb-2 hidden" id="superseded-voucher-card">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-sm text-outline">history</span>
+<span class="truncate text-[11px]">Previous Voucher: <span class="line-through font-mono" id="superseded-code">DHAROHAR10</span></span>
+</div>
+<span class="text-[9px] px-1.5 py-0.5 rounded bg-tile-red/20 text-tile-red font-bold uppercase whitespace-nowrap">Superseded</span>
+</div>
+<!-- Region Locked Notice -->
+<div class="w-full max-w-xs p-2 rounded-xl bg-surface-container border border-surface-container-highest flex items-center gap-2 text-[10px] text-outline">
+<span class="material-symbols-outlined text-xs text-tertiary">lock</span>
+<span>This region is now completed and permanently replay-locked.</span>
+</div>
+</div>
+<!-- Restart / Navigation Actions -->
+<div class="relative z-10 w-full flex flex-col gap-2 mt-2">
+<button class="w-full py-3 rounded-xl bg-gradient-to-r from-primary to-tertiary text-on-primary font-bold text-sm shadow hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5" onclick="returnToRegionSelect()">
+<span class="material-symbols-outlined text-sm">explore</span>
+<span>EXPLORE OTHER REGIONS</span>
+</button>
+<button class="w-full py-2.5 rounded-xl bg-surface-container/60 cursor-not-allowed text-outline text-xs font-semibold border border-surface-container-highest flex items-center justify-center gap-1.5" disabled="" title="Replay locked per Dharohar rules">
+<span class="material-symbols-outlined text-xs">lock</span>
+<span>THIS REGION CONQUERED (REPLAY LOCKED)</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Interactive JavaScript Engine -->
+<script>
+    // Cultural Data Store
+    const CULTURAL_QUIZ_STORE = {
+      rajasthan: {
+        name: "Rajasthan",
+        hindi: "Royal Marwar & Mewar",
+        honor: "Marwar & Mewar Legend",
+        questions: [
+          {
+            category: "WARM WELCOMING DIALECT",
+            title: "In Rajasthan, which legendary phrase is warmly spoken and sung across desert sands to say 'Welcome to our royal land'?",
+            hint: "Sung famously by folk singers across the Thar sands.",
+            options: ["Padharo Mhare Desh", "Kem Cho Maja Ma", "Aayiye Janab", "Khamma Ghani Bhabhi"],
+            correctAnswer: "Padharo Mhare Desh",
+            story: "'Padharo Mhare Desh' embodies 'Atithi Devo Bhava' — guests in Marwari homes are honored as divine embodiments."
+          },
+          {
+            category: "DESI COMFORT FOOD",
+            title: "Which iconic Rajasthani royal culinary trio is baked over clay embers and dipped generously into hot desi ghee?",
+            hint: "Round wheat dumplings served with spiced lentils and sweet jaggery crush.",
+            options: ["Dal Baati Churma", "Poha Jalebi", "Sarson Makki", "Litti Chokha"],
+            correctAnswer: "Dal Baati Churma",
+            story: "Baatis were originally invented for Rajput warriors riding long desert campaigns because sun-baked dough lasted weeks without spoiling!"
+          },
+          {
+            category: "ROYAL WEDDING RITUAL",
+            title: "In Rajasthani weddings, what auspicious ritual requires the groom on horseback to touch the decorative wooden gate with a sword or neem twig?",
+            hint: "Symbolic entrance gate test before stepping into the mandap.",
+            options: ["Toran Touching", "Joota Chupai", "Mangala Snan", "Saptapadi Running"],
+            correctAnswer: "Toran Touching",
+            story: "Hitting the Toran symbolizes the groom demonstrating strength and readiness to protect the household he is marrying into."
+          },
+          {
+            category: "SWEET GREETING",
+            title: "When meeting elders in Jaipur or Jodhpur, what beloved Rajasthani respect-phrase means 'May you be blessed with immense grace'?",
+            hint: "Accompanied by joined hands and an answer of 'Ghani Khamma'.",
+            options: ["Khamma Ghani", "Namaste Ji", "Ram Ram Sa", "Vanakkam"],
+            correctAnswer: "Khamma Ghani",
+            story: "'Khamma Ghani' comes from Sanskrit 'Kshama' (forgiveness) and 'Ghani' (many times), expressing pure humility and respect."
+          },
+          {
+            category: "FOLK DANCE CELEBRATION",
+            title: "Which graceful twirling folk dance, performed by women in shimmering flared ghagras, was historically danced to welcome brides to royal palaces?",
+            hint: "Derives its name from 'Ghoomna' (twirling in rhythm).",
+            options: ["Ghoomar", "Garba", "Bhangra", "Lavani"],
+            correctAnswer: "Ghoomar",
+            story: "Ghoomar was originally practiced by the Bhil community before being embraced by Rajput royal palaces across Mewar."
+          },
+          {
+            category: "MONSOON SWEET DELIGHT",
+            title: "Which honeycomb-like disc sweet made with flour, soaked in saffron syrup, and topped with rabri is eaten during Teej and Raksha Bandhan?",
+            hint: "Famous all over Jaipur's Johari Bazaar during the rainy season.",
+            options: ["Ghevar", "Kaju Katli", "Petha", "Mysore Pak"],
+            correctAnswer: "Ghevar",
+            story: "The rainy humidity in Shravan creates the microscopic pores inside Ghevar dough that soak in the hot sugar syrup like honeycombs."
+          },
+          {
+            category: "ROYAL WEDDING BEAUTY",
+            title: "Before a Marwari or Rajput wedding, what glowing paste of turmeric, sandalwood, and chickpea flour is applied to the bride and groom?",
+            hint: "Accompanied by aunties singing playful traditional songs.",
+            options: ["Pithi Application", "Alta Painting", "Kajal Chhuan", "Chandan Lepa"],
+            correctAnswer: "Pithi Application",
+            story: "Pithi serves both as ancient ayurvedic skin purification and a joyful family gathering where playful relatives tease the couple!"
+          },
+          {
+            category: "SPICY STREET SNACK",
+            title: "Which spicy, crisp deep-fried breakfast snack stuffed with yellow moong lentils and hing was born in Kota and Jodhpur?",
+            hint: "Enjoyed with hot sweet jalebi and spicy green kadhi.",
+            options: ["Pyaaz and Dal Kachori", "Dhokla", "Medu Vada", "Bhatura"],
+            correctAnswer: "Pyaaz and Dal Kachori",
+            story: "Pyaaz kachori originated as traveler food; high spices and fried crust preserved it across scorching desert heat waves."
+          },
+          {
+            category: "CULTURAL ATTIRE",
+            title: "What traditional circular head ornament, symbolizing auspicious marital status, rests gracefully on the forehead parting of Rajasthani brides?",
+            hint: "Bell-shaped or circular round gold ornament with enamel work.",
+            options: ["Borla", "Jhumka", "Nathni", "Haathphool"],
+            correctAnswer: "Borla",
+            story: "The spherical shape of the Borla represents the berry of the Jujube tree, traditionally symbolizing fertility and sweetness."
+          },
+          {
+            category: "FOLK DESERT RHYTHM",
+            title: "Which soulful bowed string instrument played by the Manganiyar bard community creates the hauntingly sweet music of the Thar sands?",
+            hint: "Carved out of a single block of mango or teak wood.",
+            options: ["Kamaicha", "Dholak", "Shehnai", "Harmonium"],
+            correctAnswer: "Kamaicha",
+            story: "The Kamaicha has 17 strings, three made of goat intestine and fourteen of steel, mimicking desert winds and peahens."
+          }
+        ]
+      },
+
+      punjab: {
+        name: "Punjab",
+        hindi: "Land of Five Rivers",
+        honor: "Sher-e-Punjab Culture Pride",
+        questions: [
+          {
+            category: "WINTER FOOD HEAVEN",
+            title: "On crisp Punjabi winter afternoons, what slow-cooked mustard leaf delicacy is served steaming hot with yellow corn flatbread and white butter?",
+            hint: "Paired with raw onions, jaggery (gur), and green chillies.",
+            options: ["Sarson Saag and Makki Roti", "Chole Bhature", "Rajma Chawal", "Amritsari Kulcha"],
+            correctAnswer: "Sarson Saag and Makki Roti",
+            story: "Traditional Saag is simmered in brass pots for 4–5 hours with a wooden whisk called 'madhani' to achieve its velvety texture."
+          },
+          {
+            category: "LIVELY WEDDING CELEBRATION",
+            title: "On the night before a Punjabi wedding, what lively ritual features maternal aunts dancing through the village carrying a decorated brass pot with candles?",
+            hint: "Accompanied by loud joyful boliyan awakening the entire neighborhood!",
+            options: ["Jaago Night", "Sangeet Sandhya", "Mehndi Raat", "Haldi Khel"],
+            correctAnswer: "Jaago Night",
+            story: "'Jaago' literally means 'Wake up!': in old times without invitations, neighbors were cheerfully awakened to celebrate the upcoming wedding."
+          },
+          {
+            category: "PUNJABI SWEET SLANG",
+            title: "When Punjabi friends meet or dance with pure adrenaline and joy, what energetic exclamation is shouted to celebrate good times?",
+            hint: "Often paired with 'Shawa Shawa' and raised hands.",
+            options: ["Balle Balle!", "Jai Ho!", "Aaha Re Aaha!", "Dhamaka!"],
+            correctAnswer: "Balle Balle!",
+            story: "'Balle Balle' expresses carefree triumph, positivity, and heartfelt camaraderie celebrated during harvest festivals like Baisakhi."
+          },
+          {
+            category: "MISCHIEVOUS WEDDING TRADITION",
+            title: "What playful wedding tradition sees the bride's sisters hide the groom's footwear and demand cash extortion before letting him walk out?",
+            hint: "'Joota le do, paise de do!'",
+            options: ["Joota Chupai", "Milni Ceremony", "Roka Exchange", "Anand Karaj"],
+            correctAnswer: "Joota Chupai",
+            story: "Joota Chupai breaks the ice between families, allowing young cousins and sisters-in-law to playfully bargain with the groom."
+          },
+          {
+            category: "BRIDE EMBROIDERY HEIRLOOM",
+            title: "What vibrant floral embroidery shawl on coarse khaddar cotton with colorful silk floss threads is lovingly gifted to brides by grandmothers?",
+            hint: "Literally translates to 'flower work'.",
+            options: ["Phulkari", "Zardozi", "Chikankari", "Bandhani"],
+            correctAnswer: "Phulkari",
+            story: "The special bridal Phulkari known as 'Bagh' (garden) is so dense that not a single inch of the base cotton cloth is left visible."
+          },
+          {
+            category: "REFRESHING BEVERAGE",
+            title: "Served in massive brass tall tumblers in Amritsar, what thick churned yogurt drink is topped with a heavy slab of sweet 'malai' cream?",
+            hint: "Peda lassi is world famous near the Golden Temple.",
+            options: ["Amritsari Malai Lassi", "Chaas", "Thandai", "Sattu Sharbat"],
+            correctAnswer: "Amritsari Malai Lassi",
+            story: "Legendary lassi shops in Amritsar churn over 1,000 liters daily with giant wooden churners, topped with fresh milk peda!"
+          },
+          {
+            category: "BRIDE WEDDING ORNAMENT",
+            title: "What umbrella-shaped gold and silver dangling ornaments, tied to the bride's red chooda bangles, are shaken over unmarried friends?",
+            hint: "If a piece falls on an unmarried girl, she is said to marry next!",
+            options: ["Kalire", "Payal", "Kamarbandh", "Mangtika"],
+            correctAnswer: "Kalire",
+            story: "Historically made of dried coconuts and nuts, Kalire ensured the bride had snack provisions on her long cart ride to her in-laws."
+          },
+          {
+            category: "FOLK DANCE OF WOMEN",
+            title: "Which lively, clapping and rhythmic dance performed exclusively by Punjabi women features playful couplets teasing in-laws?",
+            hint: "Accompanied by loud handclaps and high-pitched cheerful shouts.",
+            options: ["Giddha", "Bhangra", "Jhumar", "Dhamal"],
+            correctAnswer: "Giddha",
+            story: "Unlike Bhangra which uses the heavy dhol, Giddha's music comes entirely from the natural synchronised handclaps and feet rhythm of women."
+          },
+          {
+            category: "HEARTY BREAKFAST ICON",
+            title: "In old Amritsar, which flaky tandoor-baked flatbread stuffed with spiced potatoes is crushed with butter and served with tangy chana?",
+            hint: "When crushed with hands, it shatters into crisp buttery layers.",
+            options: ["Amritsari Chur Chur Kulcha", "Aloo Paratha", "Poori Sabzi", "Kachori"],
+            correctAnswer: "Amritsari Chur Chur Kulcha",
+            story: "The mineral-rich groundwater of Amritsar and tandoors burning dry wood at 400°C give Amritsari Kulcha its incomparable crunch."
+          },
+          {
+            category: "LOHRI CELEBRATION TREAT",
+            title: "During the bonfire festival of Lohri in January, what crisp jaggery-and-sesame confection is offered to the holy fire and shared with kids?",
+            hint: "Tossed into flames while singing folk songs.",
+            options: ["Rewri and Gajak", "Pinni", "Gulab Jamun", "Jalebi"],
+            correctAnswer: "Rewri and Gajak",
+            story: "Singing praise for Dulla Bhatti, the Punjabi folk hero who rescued village girls from slave traders, is the heartbeat of Lohri."
+          }
+        ]
+      },
+
+      kerala: {
+        name: "Kerala",
+        hindi: "God's Own Country",
+        honor: "God's Own Country Scholar",
+        questions: [
+          {
+            category: "FEAST ON A BANANA LEAF",
+            title: "During Onam and Malayali weddings, what opulent vegetarian feast of 26+ traditional dishes is served entirely on a fresh green plantain leaf?",
+            hint: "Eaten strictly with hands from left to right, ending with hot Payasam.",
+            options: ["Onam Grand Sadhya", "Thali Meal", "Puttu Kadala", "Malabar Biryani"],
+            correctAnswer: "Onam Grand Sadhya",
+            story: "Dishes are placed in strict scientific order: sour salt items on the leaf's tapered top tip and hot rice in the wide center!"
+          },
+          {
+            category: "HEARTWARMING GREETING",
+            title: "In Kerala, what heartwarming everyday question is asked to friends and guests visiting your home as the supreme mark of hospitality?",
+            hint: "Meaning 'Did you drink tea?'",
+            options: ["Chaya Kudicho?", "Evide Poyi?", "Sugam Aano?", "Nanni Undo?"],
+            correctAnswer: "Chaya Kudicho?",
+            story: "In Kerala's vibrant teashop culture (Chayakada), asking 'Chaya Kudicho?' is an invitation to sit and talk politics and life."
+          },
+          {
+            category: "BRIDAL HERITAGE ATTIRE",
+            title: "What elegant off-white handwoven cotton saree with rich golden zari borders is worn by Malayali brides and dancers?",
+            hint: "Handloomed in Balaramapuram and Kuthampully.",
+            options: ["Kasavu Saree", "Kanjeevaram Silk", "Bandhani Saree", "Pochampally Ikat"],
+            correctAnswer: "Kasavu Saree",
+            story: "The ivory color represents purity, while the real gold kasavu reflects Kerala's tropical sunshine in serene elegance."
+          },
+          {
+            category: "SNACK & CHAI RITUAL",
+            title: "At evening tea stalls across Kerala, what sweet golden snack made of ripe Nendran bananas dipped in spiced batter is loved by all?",
+            hint: "Known famously as banana fritters.",
+            options: ["Pazham Pori", "Unniyappam", "Neyyappam", "Samosa"],
+            correctAnswer: "Pazham Pori",
+            story: "Pairing piping hot Pazham Pori with black pepper roast or strong Sulaimani tea is considered the ultimate comfort."
+          },
+          {
+            category: "FESTIVAL FLOWER CARPET",
+            title: "During the 10 days of Onam, what elaborate geometric flower carpets are created with fresh blossoms in front of homes to welcome King Mahabali?",
+            hint: "Starts small on Atham day and expands into a massive floral mandala on Thiruvonam.",
+            options: ["Pookkalam", "Rangoli", "Kolam", "Alpana"],
+            correctAnswer: "Pookkalam",
+            story: "Tradition requires using yellow Thumba flowers for the central layer because Lord Shiva is believed to cherish wild Thumba blooms."
+          },
+          {
+            category: "CLASSICAL THEATRE EXPRESSION",
+            title: "In Kathakali, which green face makeup is worn by characters representing noble divine heroes like Arjuna and Rama?",
+            hint: "Painted using crushed mineral pigments and coconut oil taking up to 4 hours.",
+            options: ["Paccha Green Makeup", "Kathi Knife Style", "Thadi Beard Style", "Minukku Radiant Style"],
+            correctAnswer: "Paccha Green Makeup",
+            story: "The actors' eyes are reddened with harmless herbal 'chundappoo' seeds to make their subtle eye movements dramatic under oil lamps."
+          },
+          {
+            category: "RIVER FESTIVAL THRILL",
+            title: "What adrenaline-pumping Snake Boat Race on Punnamada Lake features 100+ oarsmen rowing in synchrony to the rhythm of boat songs?",
+            hint: "Named after India's first Prime Minister who jumped onto the winning boat in delight.",
+            options: ["Nehru Trophy Boat Race", "Champakulam Jalolsavam", "Aranmula Uthrattathi", "Payippad Jalotsavam"],
+            correctAnswer: "Nehru Trophy Boat Race",
+            story: "The Chundan Vallam boats can reach speeds of over 30 km/h, slicing through backwaters with the synchronized energy of entire coastal villages."
+          },
+          {
+            category: "MALAYALAM FUN WORD",
+            title: "In everyday friendly Malayalam chat, what charming filler word is used at the end of sentences to convey agreement or say 'Right? Isn't it?'",
+            hint: "As in 'Nalla food aayirunnu, alle?'",
+            options: ["Alle?", "Pinne!", "Enthu?", "Kando?"],
+            correctAnswer: "Alle?",
+            story: "'Alle?' is the beloved social glue of Malayalam conversation; asking it ensures warmth, affirmation, and shared laughter between friends."
+          },
+          {
+            category: "WEDDING KNOT CEREMONY",
+            title: "In traditional Kerala Hindu weddings, what leaf-shaped gold locket strung on yellow sacred thread is tied around the bride's neck by the groom?",
+            hint: "The Malayali equivalent of Mangalsutra.",
+            options: ["Ela Thali", "Mulla Mottu Mala", "Palakka Mala", "Kasumala"],
+            correctAnswer: "Ela Thali",
+            story: "The sacred knot is tied while elders shower paddy seeds and coconut flowers in front of a shining bronze Nilavilakku lamp."
+          },
+          {
+            category: "SWEET DESSERT FINALE",
+            title: "What luscious, jaggery and roasted coconut dessert prepared in heavy bronze urulis is the sweetest highlight of Onam feasts?",
+            hint: "Cooked with steamed rice flakes, coconut milk and cardamom.",
+            options: ["Ada Pradhaman", "Gulab Jamun", "Mysore Pak", "Rasgulla"],
+            correctAnswer: "Ada Pradhaman",
+            story: "The secret to an authentic Pradhaman is cooking the rice ada flakes in first, second, and third pressings of fresh coconut milk."
+          }
+        ]
+      },
+
+      awadh: {
+        name: "Varanasi & Awadh",
+        hindi: "Sacred Ghats & Tehzeeb",
+        honor: "Nawab & Ghat Ratna",
+        questions: [
+          {
+            category: "SACRED STREET CULTURE",
+            title: "In Varanasi, which melt-in-mouth mouth freshener wrapped in a fragrant betel leaf with gulkand and silver vark is world famous?",
+            hint: "Famous paan celebrated in classic folk ballads.",
+            options: ["Banarasi Paan", "Petha", "Malaiyo", "Thandai"],
+            correctAnswer: "Banarasi Paan",
+            story: "The Magahi betel leaf used for Banarasi paan has no fiber and dissolves completely on the tongue without needing to chew heavily!"
+          },
+          {
+            category: "BANARASI PHILOSOPHY",
+            title: "What iconic phrase do Banarsis joyfully use to describe their state of carefree contentment, living life without worry on the sacred ghats?",
+            hint: "A joyful state of carefree living.",
+            options: ["Mauj and Masti", "Jugaad", "Fursat", "Bindass"],
+            correctAnswer: "Mauj and Masti",
+            story: "'Banarasipan' teaches that life's true wealth is an unhurried morning dip in the Ganga followed by a kulhad of rabri chai."
+          },
+          {
+            category: "AWADHI ROYAL CUISINE",
+            title: "Which legendary melt-in-mouth kebab was specially invented in Lucknow for a toothless Nawab using raw papaya and 160 aromatic spices?",
+            hint: "Prepared by royal chefs on a flat griddle (mahi tawa).",
+            options: ["Galouti Kebab", "Seekh Kebab", "Shami Kebab", "Kakori Kebab"],
+            correctAnswer: "Galouti Kebab",
+            story: "Nawab Asad-ud-Daula loved kebabs so much that when he lost his teeth in old age, royal chefs perfected a recipe so tender it melted instantly!"
+          },
+          {
+            category: "WINTER FOAM SWEET",
+            title: "Available only on chilly winter mornings in Varanasi's old alleys, what cloud-like sweet foam is made from dew-kissed churned milk and saffron?",
+            hint: "Garnished with pistachios and served in earthen clay kulhads.",
+            options: ["Malaiyo", "Rabri", "Kheer", "Rasmalai"],
+            correctAnswer: "Malaiyo",
+            story: "Milk is boiled and hung overnight beneath open skies so winter dew causes the milk surface to froth into delicate sweet clouds."
+          },
+          {
+            category: "DIVINE WEDDING MUSIC",
+            title: "Which sacred wind instrument, perfected by Bharat Ratna Ustad Bismillah Khan on the steps of Balaji temple, is essential for Indian weddings?",
+            hint: "Double-reed auspicious instrument evoking celebration and emotion.",
+            options: ["Shehnai", "Bansuri", "Sitar", "Sarangi"],
+            correctAnswer: "Shehnai",
+            story: "Ustad Bismillah Khan practiced Ragas on the ghats of the Ganga at 4 AM every single day, saying Mother Ganga whispered musical notes to him."
+          },
+          {
+            category: "ROYAL WEAVE BRIDAL ICON",
+            title: "Which opulent handloom silk weave with pure silver and gold zari brocade has been woven by Master Julaha families for centuries in Varanasi?",
+            hint: "The definitive royal bridal saree across India.",
+            options: ["Banarasi Brocade Silk", "Chanderi Silk", "Sambalpuri Silk", "Tussar Silk"],
+            correctAnswer: "Banarasi Brocade Silk",
+            story: "A single masterwork Banarasi saree can take up to six months of painstaking handloom coordination between artisan weavers."
+          },
+          {
+            category: "LUCKNAWI EMBROIDERY",
+            title: "Which delicate white-on-white shadow embroidery work on sheer muslin fabric was patronized by Empress Noor Jahan in Awadh?",
+            hint: "Comprises 36 distinct stitch types like bakhiya, phanda, and jaali.",
+            options: ["Lucknawi Chikankari", "Kantha Stitch", "Kashmiri Aari", "Mirror Needlework"],
+            correctAnswer: "Lucknawi Chikankari",
+            story: "Chikankari was designed to keep royals cool during scorching Gangetic summers while creating breathtaking subtle textures."
+          },
+          {
+            category: "STREET SLANG COURTESY",
+            title: "In Lucknow and Awadh, what phrase embodies legendary politeness when offering a seat, doorway, or delicacy to someone else first?",
+            hint: "Pehle aap, nahi pehle aap!",
+            options: ["Pehle Aap", "Chalo Chalo", "Aane Do", "Hato Saamne"],
+            correctAnswer: "Pehle Aap",
+            story: "The legendary etiquette (tehzeeb) of Awadh made courtesy an art form where mutual respect preceded any personal convenience."
+          },
+          {
+            category: "MORNING STREET FEAST",
+            title: "In the morning lanes of Godowlia, what breakfast of tiny crisp potato-stuffed pooris served with spicy chickpea curry and hot jalebi is a ritual?",
+            hint: "Served on sal leaf dona plates with spiced pumpkin subzi.",
+            options: ["Kachori Sabzi and Jalebi", "Poha", "Idli Vada", "Aloo Paratha"],
+            correctAnswer: "Kachori Sabzi and Jalebi",
+            story: "Banarsi kachoris come in two forms: soft 'Badi Kachori' stuffed with urad dal and the bite-sized crunchy 'Chhoti Kachori'."
+          },
+          {
+            category: "EVENING DEVOTIONAL SPLENDOR",
+            title: "Every evening at twilight at Dashashwamedh Ghat, what choreographic ritual with tiered brass multi-wick lamps mesmerizes thousands of pilgrims?",
+            hint: "Accompanied by conch shells, incense, and bells echoing across Mother Ganga.",
+            options: ["Maha Ganga Aarti", "Dev Deepawali", "Kumbh Snan", "Ramlila Play"],
+            correctAnswer: "Maha Ganga Aarti",
+            story: "The heavy brass lamps held by priests weigh up to 4.5 kilograms and represent the light of wisdom dispelling ignorance."
+          }
+        ]
+      },
+
+      bengal: {
+        name: "Bengal & East",
+        hindi: "Land of Adda & Sweets",
+        honor: "Bangla Sanskriti Shiromani",
+        questions: [
+          {
+            category: "SWEET BENGALI PHRASE",
+            title: "What sweet, affectionate everyday greeting is asked by every Bengali grandmother or friend to enquire 'How are you?'",
+            hint: "The universal answer is 'Bhalo Achi!' (I am doing well).",
+            options: ["Kemon Acho?", "Ki Khobor?", "Kothay Jachho?", "Bhalo Achen?"],
+            correctAnswer: "Kemon Acho?",
+            story: "The melodious, rounded vowel sounds of the Bengali language make even simple greetings like 'Kemon Acho' sound warmly musical."
+          },
+          {
+            category: "ICONIC SPONGY SWEET",
+            title: "Which spongy, juicy sweet made from fresh chhena cottage cheese dumplings boiled in light sugar syrup was perfected in 1868 in Kolkata?",
+            hint: "Squeezed gently to release syrup before popping into the mouth!",
+            options: ["Spongy Rosogolla", "Gulab Jamun", "Jalebi", "Cham Cham"],
+            correctAnswer: "Spongy Rosogolla",
+            story: "Nobin Chandra Das experimented for months to stop the chhena balls from disintegrating in boiling syrup, earning the title 'Columbus of Rosogolla'."
+          },
+          {
+            category: "WEDDING PEEKABOO RITUAL",
+            title: "In a Bengali wedding, what enchanting ritual features the bride carried on a wooden stool while covering her face with two betel leaves?",
+            hint: "Followed by the auspicious first loving glance between the bride and groom.",
+            options: ["Shubho Drishti and Saat Paak", "Sindoor Khela", "Gaye Holud", "Bou Bhaat"],
+            correctAnswer: "Shubho Drishti and Saat Paak",
+            story: "When the betel leaves are lowered for Shubho Drishti, relatives blow conch shells and make auspicious trilling sounds."
+          },
+          {
+            category: "CARAMELIZED CLAYPOT DESSERT",
+            title: "Which creamy, pale pink or caramel sweetened curd fermented in porous earthen clay pots is a sacred must-have ending for every Bengali meal?",
+            hint: "Nabadwip and Kolkata are world-renowned for its silky texture.",
+            options: ["Mishti Doi", "Shrikhand", "Phirni", "Payesh"],
+            correctAnswer: "Mishti Doi",
+            story: "The porous clay pot absorbs the excess water from curdling milk, thickening the yoghurt into a naturally firm, velvety custard."
+          },
+          {
+            category: "PUJO ECSTATIC DANCE",
+            title: "During Durga Puja, what energetic devotional dance is performed balancing clay censers smoking with coconut husk and camphor to loud Dhak drums?",
+            hint: "Danced in front of Ma Durga's idol.",
+            options: ["Dhunuchi Naach", "Chhau Dance", "Baul Naach", "Jatra Theatre"],
+            correctAnswer: "Dhunuchi Naach",
+            story: "Skilled dancers balance two flaming dhunuchis in hands and one between teeth while spinning to the thundering dhak rhythm!"
+          },
+          {
+            category: "KOLKATA INTELLECTUAL PASTIME",
+            title: "What is the famous Bengali cultural tradition of endless passionate discussions with friends over hot tea covering cinema, politics, and books?",
+            hint: "Famously practiced at Coffee House on College Street.",
+            options: ["Adda", "Majlis", "Baithak", "Charcha"],
+            correctAnswer: "Adda",
+            story: "'Adda' was included in the Oxford English Dictionary; Nobel laureates Rabindranath Tagore and Amartya Sen both praised it as an incubator of ideas."
+          },
+          {
+            category: "BRIDE AUSPICIOUS BANGLES",
+            title: "What traditional pair of white conch shell and red coral bangles is worn by married Bengali women along with the iron bangle?",
+            hint: "Symbolic white and red pair worn on both wrists.",
+            options: ["Shankha Pola", "Chooda Bangles", "Kangan Bangles", "Bala Bangles"],
+            correctAnswer: "Shankha Pola",
+            story: "Shankha represents serenity and purity (from pure conch shells), while red Pola symbolises energy, passion, and good health."
+          },
+          {
+            category: "STREET FOOD LEGEND",
+            title: "In Kolkata, what crisp semolina shells stuffed with spiced mashed potatoes, black chickpeas, and tangy tamarind water are called?",
+            hint: "Known by distinct regional names across India.",
+            options: ["Phuchka", "Golgappa", "Pani Puri", "Batasha"],
+            correctAnswer: "Phuchka",
+            story: "Unlike Mumbai Pani Puri which uses ragda, Kolkata Phuchka features tangy boiled potato mash flavored with freshly ground bhaja moshla spice blend."
+          },
+          {
+            category: "VIJAYADASHAMI SISTERHOOD",
+            title: "On the final day of Durga Puja, what joyous ritual sees married women smear red vermilion on Ma Durga and each other's faces in celebration?",
+            hint: "Dressed in glorious red-and-white sarees.",
+            options: ["Sindoor Khela", "Boron Ritual", "Visarjan", "Bhog Vitran"],
+            correctAnswer: "Sindoor Khela",
+            story: "Sindoor Khela celebrates Goddess Durga as a beloved daughter bidding farewell before returning to her Himalayan home with Lord Shiva."
+          },
+          {
+            category: "WINTER DATE PALM NECTAR",
+            title: "During Bengal's winter months, what prized liquid jaggery tapped from date palm trees gives Sandesh and Payesh its heavenly smokey sweetness?",
+            hint: "Famous seasonal liquid gur with rich smokey aroma.",
+            options: ["Nolen Gur", "Khandsari", "Palm Candy", "Desi Shakkar"],
+            correctAnswer: "Nolen Gur",
+            story: "Tappers climb date palms at dawn in 10°C chill; the very first boiling batch creates the coveted 'Jhola Gur' with delicate floral undertones."
+          }
+        ]
+      }
+    };
+
+    // Strict Tracking Stores (LocalStorage backed with in-memory fallback)
+    const STORAGE_KEY_COMPLETED = "dharohar_completed_regions_v1";
+    const STORAGE_KEY_ACTIVE_VOUCHER = "dharohar_active_voucher_v1";
+    const STORAGE_KEY_PREVIOUS_VOUCHER = "dharohar_previous_voucher_v1";
+
+    function loadCompletedQuizzes() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY_COMPLETED);
+        return stored ? JSON.parse(stored) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveCompletedQuizzes(data) {
+      try {
+        localStorage.setItem(STORAGE_KEY_COMPLETED, JSON.stringify(data));
+      } catch (e) {}
+    }
+
+    function loadActiveVoucher() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY_ACTIVE_VOUCHER);
+        return stored ? JSON.parse(stored) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function loadPreviousVoucher() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY_PREVIOUS_VOUCHER);
+        return stored ? JSON.parse(stored) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function setActiveVoucher(newVoucherData) {
+      try {
+        const currentActive = loadActiveVoucher();
+        if (currentActive && currentActive.code !== newVoucherData.code) {
+          localStorage.setItem(STORAGE_KEY_PREVIOUS_VOUCHER, JSON.stringify(currentActive));
+        }
+        localStorage.setItem(STORAGE_KEY_ACTIVE_VOUCHER, JSON.stringify(newVoucherData));
+      } catch (e) {}
+      refreshActiveVoucherUI();
+    }
+
+    // State Variables
+    let completedQuizzes = loadCompletedQuizzes();
+    let currentRegionKey = "bengal";
+    let activeQuestions = [];
+    let qIndex = 0;
+    let rightAnswersCount = 0;
+    let userScore = 0;
+    let currentStreak = 0;
+    let timerVal = 20;
+    let timerTimer = null;
+    let answerLock = false;
+
+    // Helper: Fisher-Yates shuffle array
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function prepareQuizQuestions(regionKey) {
+      const rawList = CULTURAL_QUIZ_STORE[regionKey].questions;
+      return rawList.map((item) => {
+        const shuffledOpts = shuffleArray(item.options);
+        const correctPos = shuffledOpts.indexOf(item.correctAnswer);
+        return {
+          ...item,
+          options: shuffledOpts,
+          correctIndex: correctPos
+        };
+      });
+    }
+
+    // Refresh Regional Cards UI to reflect completed/locked status
+    function refreshRegionCardsUI() {
+      completedQuizzes = loadCompletedQuizzes();
+      const regionKeys = ["rajasthan", "punjab", "kerala", "awadh", "bengal"];
+
+      regionKeys.forEach(rKey => {
+        const cardBtn = document.getElementById(`region-card-${rKey}`);
+        const badge = document.getElementById(`badge-${rKey}`);
+        const desc = document.getElementById(`desc-${rKey}`);
+        const sub = document.getElementById(`sub-${rKey}`);
+        const arrow = document.getElementById(`arrow-${rKey}`);
+
+        if (!cardBtn) return;
+
+        const isCompleted = !!completedQuizzes[rKey];
+        if (isCompleted) {
+          const compData = completedQuizzes[rKey];
+          cardBtn.classList.remove("hover:bg-surface-container-high", "hover:border-primary/60", "active:scale-[0.98]");
+          cardBtn.classList.add("opacity-75", "border-dashed", "border-primary/40", "bg-surface-dim");
+          cardBtn.setAttribute("data-locked", "true");
+
+          badge.className = "text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center gap-1 border border-emerald-500/30";
+          badge.innerHTML = `<span class="material-symbols-outlined text-[11px]">lock</span> LOCKED • ${compData.discount}% VOUCHER`;
+
+          desc.textContent = `Completed on ${compData.completedDate} • Earned ${compData.score}/100 PTS`;
+          desc.className = "text-xs text-emerald-400/90 truncate mt-0.5 font-medium";
+
+          sub.innerHTML = `<span class="text-[10px] text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs text-outline">verified</span> Region Conquered (Replay Disabled for Patron Fairness)</span>`;
+          arrow.textContent = "lock";
+          arrow.className = "material-symbols-outlined text-outline text-lg";
+        } else {
+          cardBtn.removeAttribute("data-locked");
+        }
+      });
+    }
+
+    function refreshActiveVoucherUI() {
+      const activeV = loadActiveVoucher();
+      const banner = document.getElementById("active-voucher-banner");
+      if (activeV && activeV.discount > 0) {
+        banner.classList.remove("hidden");
+        document.getElementById("banner-voucher-code").textContent = activeV.code;
+        document.getElementById("banner-voucher-pct").textContent = `${activeV.discount}% OFF STAY`;
+      } else {
+        banner.classList.add("hidden");
+      }
+    }
+
+    function handleRegionCardClick(regionKey) {
+      completedQuizzes = loadCompletedQuizzes();
+      if (completedQuizzes[regionKey]) {
+        const item = completedQuizzes[regionKey];
+        alert(`Rule Enforced: You have already conquered the ${CULTURAL_QUIZ_STORE[regionKey].name} quiz with a score of ${item.score}/100 PTS (Voucher: ${item.voucherCode}). Each cultural quiz can only be played once to preserve patron fairness!`);
+        return;
+      }
+      startQuizForRegion(regionKey);
+    }
+
+    // View Switching
+    function startQuizForRegion(regionKey) {
+      if (!CULTURAL_QUIZ_STORE[regionKey]) return;
+      if (completedQuizzes[regionKey]) {
+        handleRegionCardClick(regionKey);
+        return;
+      }
+
+      currentRegionKey = regionKey;
+      activeQuestions = prepareQuizQuestions(regionKey);
+
+      document.getElementById("view-region-select").classList.add("hidden");
+      const arena = document.getElementById("view-quiz-arena");
+      arena.classList.remove("hidden");
+      arena.classList.add("flex");
+
+      resetQuizState();
+      displayQuestion(0);
+    }
+
+    function returnToRegionSelect() {
+      clearInterval(timerTimer);
+      const modal = document.getElementById("modal-feedback");
+      modal.classList.add("hidden");
+      modal.classList.remove("opacity-100");
+
+      const podium = document.getElementById("modal-podium");
+      podium.classList.add("hidden");
+      podium.classList.remove("opacity-100");
+
+      document.getElementById("view-quiz-arena").classList.add("hidden");
+      document.getElementById("view-quiz-arena").classList.remove("flex");
+
+      refreshRegionCardsUI();
+      refreshActiveVoucherUI();
+      document.getElementById("view-region-select").classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetQuizState() {
+      qIndex = 0;
+      userScore = 0;
+      currentStreak = 0;
+      rightAnswersCount = 0;
+      updateHUD();
+    }
+
+    function displayQuestion(idx) {
+      if (idx >= activeQuestions.length) {
+        finishAndOpenVictoryPodium();
+        return;
+      }
+
+      answerLock = false;
+      const q = activeQuestions[idx];
+      const reg = CULTURAL_QUIZ_STORE[currentRegionKey];
+
+      // Update HUD
+      document.getElementById("hud-region-name").textContent = reg.name;
+      document.getElementById("hud-sub-realm").textContent = reg.hindi;
+      document.getElementById("hud-q-number").textContent = `Question ${idx + 1} of 10`;
+
+      const progressPct = ((idx + 1) / activeQuestions.length) * 100;
+      document.getElementById("quiz-progress-bar").style.width = `${progressPct}%`;
+
+      // Question body
+      document.getElementById("q-category-tag").textContent = q.category;
+      document.getElementById("q-question-text").textContent = q.title;
+      document.getElementById("q-hint-caption").textContent = q.hint;
+
+      // Render strictly uniform option choices across all 4 tiles
+      for (let i = 0; i < 4; i++) {
+        const tileEl = document.getElementById(`tile-${i}-text`);
+        if (tileEl) {
+          tileEl.textContent = q.options[i];
+        }
+      }
+
+      startTimer();
+    }
+
+    function startTimer() {
+      clearInterval(timerTimer);
+      timerVal = 20;
+      refreshTimerUI(timerVal);
+
+      timerTimer = setInterval(() => {
+        timerVal--;
+        refreshTimerUI(timerVal);
+
+        if (timerVal <= 0) {
+          clearInterval(timerTimer);
+          timeOutTrigger();
+        }
+      }, 1000);
+    }
+
+    function refreshTimerUI(sec) {
+      const numEl = document.getElementById("timer-number");
+      const ringEl = document.getElementById("timer-ring-circle");
+      const statEl = document.getElementById("timer-status-text");
+
+      numEl.textContent = sec;
+
+      const fullDash = 94.2;
+      const progress = (20 - sec) / 20;
+      ringEl.style.strokeDashoffset = fullDash * progress;
+
+      if (sec <= 5) {
+        ringEl.classList.remove("stroke-primary");
+        ringEl.classList.add("stroke-tile-red");
+        numEl.classList.add("text-tile-red");
+        statEl.textContent = "Hurry up!";
+        statEl.classList.add("text-tile-red");
+      } else {
+        ringEl.classList.add("stroke-primary");
+        ringEl.classList.remove("stroke-tile-red");
+        numEl.classList.remove("text-tile-red");
+        statEl.textContent = "Take your time";
+        statEl.classList.remove("text-tile-red");
+      }
+    }
+
+    function timeOutTrigger() {
+      if (answerLock) return;
+      answerLock = true;
+      currentStreak = 0;
+      updateHUD();
+      renderModalPopup(false, true);
+    }
+
+    function handleOptionChosen(optionIndex) {
+      if (answerLock) return;
+      answerLock = true;
+      clearInterval(timerTimer);
+
+      const q = activeQuestions[qIndex];
+      const isCorrect = (optionIndex === q.correctIndex);
+
+      if (isCorrect) {
+        rightAnswersCount++;
+        currentStreak++;
+        userScore = rightAnswersCount * 10;
+      } else {
+        currentStreak = 0;
+      }
+
+      updateHUD();
+      renderModalPopup(isCorrect, false);
+    }
+
+    function updateHUD() {
+      document.getElementById("hud-score").textContent = userScore;
+      document.getElementById("hud-streak").textContent = `${currentStreak} STREAK`;
+
+      const discountPct = rightAnswersCount * 2;
+      document.getElementById("hud-discount").textContent = `VOUCHER: ${discountPct}% OFF`;
+    }
+
+    function renderModalPopup(isCorrect, isTimeout) {
+      const q = activeQuestions[qIndex];
+      const modal = document.getElementById("modal-feedback");
+      const iconCircle = document.getElementById("modal-icon-circle");
+      const iconSymbol = document.getElementById("modal-icon-symbol");
+      const tagline = document.getElementById("modal-tagline");
+      const heading = document.getElementById("modal-heading");
+      const scorePill = document.getElementById("modal-score-pill");
+      const voucherPill = document.getElementById("modal-voucher-pill");
+      const streakNote = document.getElementById("modal-streak-note");
+      const bottomStatus = document.getElementById("modal-bottom-status");
+      const symbolMap = ["▲", "◆", "●", "■"];
+
+      document.getElementById("modal-q-badge").textContent = `QUESTION ${qIndex + 1} OF 10`;
+      document.getElementById("modal-reveal-symbol").textContent = symbolMap[q.correctIndex];
+      document.getElementById("modal-reveal-text").textContent = q.correctAnswer;
+      document.getElementById("modal-cultural-story").textContent = q.story;
+
+      const currentDiscount = rightAnswersCount * 2;
+      bottomStatus.textContent = `Current Potential Discount: ${currentDiscount}% OFF (Winning will set this as your only active voucher)`;
+
+      if (isCorrect) {
+        iconCircle.className = "w-18 h-18 p-4 rounded-full flex items-center justify-center mb-3 shadow-2xl bg-gradient-to-tr from-primary to-tertiary text-on-primary";
+        iconSymbol.textContent = "check_circle";
+        tagline.textContent = "BRILLIANT CHOICE!";
+        tagline.className = "text-xs uppercase tracking-widest font-bold text-primary mb-1";
+        heading.textContent = "THAT'S CORRECT!";
+        heading.className = "font-serif text-3xl font-extrabold text-primary mb-2";
+
+        scorePill.classList.remove("hidden");
+        voucherPill.classList.remove("hidden");
+
+        if (currentStreak > 1) {
+          streakNote.classList.remove("hidden");
+          document.getElementById("modal-streak-str").textContent = `${currentStreak} IN A ROW! KEEP IT GOING!`;
+        } else {
+          streakNote.classList.add("hidden");
+        }
+      } else {
+        iconCircle.className = "w-18 h-18 p-4 rounded-full flex items-center justify-center mb-3 shadow-2xl bg-tile-red/30 text-tile-red border border-tile-red/50";
+        iconSymbol.textContent = isTimeout ? "hourglass_disabled" : "cancel";
+        tagline.textContent = isTimeout ? "TIME'S UP" : "GOOD TRY";
+        tagline.className = "text-xs uppercase tracking-widest font-bold text-tile-red mb-1";
+        heading.textContent = isTimeout ? "OUT OF TIME!" : "HERE'S THE TRADITION";
+        heading.className = "font-serif text-2xl font-extrabold text-tile-red mb-2";
+
+        scorePill.classList.add("hidden");
+        voucherPill.classList.add("hidden");
+        streakNote.classList.add("hidden");
+      }
+
+      if (qIndex === activeQuestions.length - 1) {
+        document.getElementById("btn-modal-next-text").textContent = "FINISH & LOCK IN VOUCHER";
+      } else {
+        document.getElementById("btn-modal-next-text").textContent = "NEXT QUESTION";
+      }
+
+      modal.classList.remove("hidden");
+      setTimeout(() => {
+        modal.classList.remove("opacity-0");
+        modal.classList.add("opacity-100");
+      }, 10);
+    }
+
+    function goToNextQuestion() {
+      const modal = document.getElementById("modal-feedback");
+      modal.classList.remove("opacity-100");
+      modal.classList.add("opacity-0");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        qIndex++;
+        displayQuestion(qIndex);
+      }, 200);
+    }
+
+    // Marks region completed permanently and makes this new voucher the ONLY active voucher
+    function finishAndOpenVictoryPodium() {
+      clearInterval(timerTimer);
+      const reg = CULTURAL_QUIZ_STORE[currentRegionKey];
+      const podium = document.getElementById("modal-podium");
+
+      const finalScore = rightAnswersCount * 10;
+      const finalDiscount = rightAnswersCount * 2;
+      const codeSuffix = finalDiscount > 0 ? String(finalDiscount) : "10";
+      const newVoucherCode = `DHAROHAR${codeSuffix}`;
+
+      // Check for previous voucher before overwrite
+      const priorVoucher = loadActiveVoucher();
+
+      // Rule 1: Permanently mark this region completed
+      completedQuizzes[currentRegionKey] = {
+        region: currentRegionKey,
+        regionName: reg.name,
+        score: finalScore,
+        correctCount: rightAnswersCount,
+        discount: finalDiscount,
+        voucherCode: newVoucherCode,
+        completedDate: new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+      };
+      saveCompletedQuizzes(completedQuizzes);
+
+      // Rule 2: Overwrite active voucher with latest earned voucher
+      setActiveVoucher({
+        region: currentRegionKey,
+        regionName: reg.name,
+        code: newVoucherCode,
+        discount: finalDiscount,
+        earnedAt: new Date().toISOString()
+      });
+
+      // Update UI for victory podium
+      document.getElementById("podium-final-score").textContent = `${finalScore}/100`;
+      document.getElementById("podium-final-accuracy").textContent = `${rightAnswersCount}/10`;
+      document.getElementById("podium-honor-pill").textContent = reg.honor;
+      document.getElementById("podium-region-title").textContent = `${reg.name} Heritage Champion`;
+      document.getElementById("podium-final-voucher").textContent = `${finalDiscount}%`;
+      document.getElementById("podium-voucher-badge").textContent = `${finalDiscount}% OFF STAY`;
+      document.getElementById("podium-promo-code").textContent = newVoucherCode;
+
+      // Handle superseded voucher card display
+      const supersededCard = document.getElementById("superseded-voucher-card");
+      if (priorVoucher && priorVoucher.code !== newVoucherCode) {
+        supersededCard.classList.remove("hidden");
+        document.getElementById("superseded-code").textContent = `${priorVoucher.code} (${priorVoucher.discount}% OFF - Expired)`;
+      } else {
+        supersededCard.classList.add("hidden");
+      }
+
+      podium.classList.remove("hidden");
+      setTimeout(() => {
+        podium.classList.remove("opacity-0");
+        podium.classList.add("opacity-100");
+      }, 10);
+    }
+
+    function copyVoucherCode(btn) {
+      const codeText = document.getElementById("podium-promo-code").textContent;
+      navigator.clipboard.writeText(codeText);
+      const old = btn.textContent;
+      btn.textContent = "COPIED!";
+      setTimeout(() => {
+        btn.textContent = old;
+      }, 1500);
+    }
+
+    // Startup Initialization
+    window.addEventListener("DOMContentLoaded", () => {
+      refreshRegionCardsUI();
+      refreshActiveVoucherUI();
+
+      // If Bengal was already completed in storage, go directly to region selector
+      if (completedQuizzes["bengal"]) {
+        document.getElementById("view-quiz-arena").classList.add("hidden");
+        document.getElementById("view-quiz-arena").classList.remove("flex");
+        document.getElementById("view-region-select").classList.remove("hidden");
+      } else {
+        activeQuestions = prepareQuizQuestions("bengal");
+        resetQuizState();
+        displayQuestion(0);
+      }
+    });
+  </script>
+</body></html>

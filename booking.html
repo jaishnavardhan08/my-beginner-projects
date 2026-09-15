@@ -1,0 +1,528 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        "colors": {
+          "secondary": "#8C581E",
+          "surface-variant": "#E8DED1",
+          "outline-variant": "#D6C4AD",
+          "on-secondary-fixed-variant": "#4E2B08",
+          "primary-container": "#B25619",
+          "on-error": "#FFFFFF",
+          "on-secondary-fixed": "#2C1704",
+          "surface-container-high": "#E7DC sample",
+          "surface-container-high": "#E8DFD1",
+          "tertiary": "#8A5A43",
+          "tertiary-container": "#A06B52",
+          "on-primary-container": "#FFF9EE",
+          "error-container": "#FCD8D4",
+          "surface-bright": "#FAF6EE",
+          "on-secondary-container": "#593108",
+          "secondary-fixed": "#F3DCBA",
+          "on-secondary": "#FFFFFF",
+          "surface-container-lowest": "#FBF8F2",
+          "surface-container": "#EFE7D8",
+          "on-tertiary": "#FFFFFF",
+          "on-surface-variant": "#6E5D4B",
+          "inverse-on-surface": "#F5EFE6",
+          "surface-dim": "#E3D7C5",
+          "background": "#F4EFE6",
+          "inverse-primary": "#E2985D",
+          "surface-container-low": "#F8F3EA",
+          "tertiary-fixed": "#F6DCD1",
+          "primary-fixed-dim": "#D88A52",
+          "on-error-container": "#7A1C16",
+          "on-tertiary-container": "#FFF9EE",
+          "secondary-fixed-dim": "#E5BE84",
+          "surface-container-highest": "#E2D5C2",
+          "surface-tint": "#B85827",
+          "on-tertiary-fixed": "#32170D",
+          "inverse-surface": "#2C2218",
+          "on-primary-fixed-variant": "#672E0A",
+          "error": "#B83A30",
+          "on-background": "#2C2218",
+          "on-tertiary-fixed-variant": "#5E3624",
+          "on-surface": "#2C2218",
+          "secondary-container": "#E3BA7E",
+          "surface": "#F4EFE6",
+          "on-primary": "#FFFDFC",
+          "tertiary-fixed-dim": "#DFB8A6",
+          "outline": "#9E8B75",
+          "on-primary-fixed": "#331202",
+          "primary": "#B85827",
+          "primary-fixed": "#F7D8C5"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-2xs": "0.25rem",
+          "space-md": "1rem",
+          "mobile-margin": "1.25rem",
+          "space-sm": "0.75rem",
+          "space-xs": "0.5rem",
+          "space-2xl": "3rem",
+          "mobile-gutter": "0.75rem",
+          "gutter-sm": "1rem",
+          "space-xl": "2rem",
+          "space-lg": "1.5rem",
+          "space-3xl": "4rem"
+        },
+        "fontFamily": {
+          "body-lg": ["Plus Jakarta Sans"],
+          "label-sm": ["Plus Jakarta Sans"],
+          "headline-sm": ["Playfair Display"],
+          "title-lg": ["Playfair Display"],
+          "headline-md": ["Playfair Display"],
+          "label-md": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "display-hero": ["Playfair Display"],
+          "headline-lg-mobile": ["Playfair Display"],
+          "title-md": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"],
+          "headline-lg": ["Playfair Display"]
+        },
+        "fontSize": {
+          "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+          "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+          "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+          "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" }],
+          "body-sm": ["13px", { "lineHeight": "19px", "fontWeight": "400" }],
+          "display-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+          "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+          "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+          "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+        }
+      }
+    }
+  }
+</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#F4EFE6;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-[#F4EFE6] text-[#2C2218] font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-[#F5EFE4]/95 backdrop-blur-xl border-b border-[#D8C7B0] shadow-[0_4px_20px_rgba(140,88,30,0.08)]"><div class="h-16 px-gutter-sm flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-xs"><button aria-label="Go back" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-[#6E5D4B] hover:text-[#B85827] transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[20px]">arrow_back</span></button><h1 class="font-title-lg text-title-lg text-[#B85827] tracking-wide truncate">Trip Details</h1></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1 bg-[#E8DFD1] border border-[#D8C7B0] px-space-xs py-1 rounded-full text-[#8C581E] shadow-sm"><span class="material-symbols-outlined text-[16px] text-[#B85827]">graphic_eq</span><span class="font-label-sm text-label-sm uppercase text-[#6E5D4B] tracking-wider hidden sm:inline-block">Raga</span><span class="w-1.5 h-1.5 rounded-full bg-[#C59B27] animate-pulse"></span></div><img src="https://lh3.googleusercontent.com/aida/AEtjO1W_SIyhlfl6Xv22uidN08N3v2nw2DM3qVhQNwIV_PAmUNxAwBywz2JSvwNay9qITyKIyNzQvQrr0diD4XTy5PQMyQ0HCNtp2rlaC42U04igNNRg53QY7zYNAp6sMDXeHIkMJw5WDBBDqJkl8aq96ryCnjunar2ygr_aZOLGyNlVnYXFtreZuQ6QgrjMQlnTeCA21Alh0EBIuBaEot7YjvNla9Apkt8guh5_nGXABEVabu7F_B620NnfIR1m" alt="Dharohar Guest Patron" class="w-8 h-8 rounded-full object-cover border border-[#CBB79C] shadow-sm"></div></div></header><main class="flex flex-col relative w-full pt-16 bg-[#F4EFE6] text-[#2C2218]"><div class="flex flex-col w-full pb-36">
+<!-- Micro Breadcrumb & Heritage Header Pill -->
+<div class="px-gutter-sm pt-space-sm pb-space-xs flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="inline-flex items-center gap-1 text-[#B85827] hover:text-[#8C581E] transition-colors font-label-md text-label-md font-semibold" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="">Curated Haveli Sanctuaries / राजस्थान हवेलियाँ</span>
+</button>
+</div>
+<!-- Heritage Trust Badges Row -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-2xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EDE4D3] border border-[#D8C7B0] text-[#8C581E] font-label-sm text-label-sm uppercase tracking-wider shadow-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B85827]"></span>
+        18th Century Relic • Est. 1756
+      </span>
+
+</div>
+<!-- Haveli Title & Geographic Signature -->
+<div class="mt-space-2xs">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-[#8C3A0D] tracking-wide">Rawla Mandawa Heritage Kothi</h1>
+<p class="font-title-md text-title-md text-[#8C581E] tracking-normal mt-0.5 font-medium">रावला मंडावा हेरिटेज कोठी</p>
+<div class="flex items-center gap-1.5 mt-space-xs text-[#6E5D4B] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[#B85827] text-[16px]">location_on</span>
+<span class="text-[#3D2F22] font-semibold">Mandawa, Shekhawati, Rajasthan</span>
+<span class="text-[#CBB79C]">•</span>
+<span class="text-[#8C581E] font-medium">170 km from Jaipur</span>
+</div>
+</div>
+</div>
+<!-- Visual Tapestry / Gallery Showcase Module -->
+<section aria-label="Haveli Architectural Sanctuary Gallery" class="px-gutter-sm mt-space-sm flex flex-col gap-space-xs">
+<!-- Grand Courtyard Hero Visual -->
+<div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden shadow-md border border-[#D8C7B0] bg-[#EFE8DC] group">
+<img class="w-full h-full object-cover object-center" data-alt="Grand illuminated night courtyard of Rawla Mandawa heritage haveli in Shekhawati Rajasthan with intricately carved sandstone arches, traditional brass lanterns casting warm golden glow, water fountain and low velvet diwan seating under a starlit twilight desert sky" src="https://lh3.googleusercontent.com/aida/AEtjO1WZMif4DVzu_qAASJDcjI0pY4XL3sa3zGLzY6Wm1e4KYsCI16SMqKjef5l9RT5T_qXyv4iLwcbEY7N2ozouPMeHyjz77HaNSZ86ro2v_80cQX017IXI-vr13YcbClnUqiduX2tLO_2h9kOZM76HDpgYzLRMfHXRPct8xVaBEhubZZ0gPdOPbLDxVfSVUpD7DoQLWJvmJBxpN17r_M_6rAXkhNVc4BcLvUEQ4nRb1bn7lNXNTw8Ii606pzz4">
+<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent"></div>
+<!-- Ambient Diya Lighting Halo -->
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F2]/95 backdrop-blur-md text-[#8C3A0D] border border-[#DECFBA] font-label-sm text-label-sm shadow-md font-semibold">
+<span class="material-symbols-outlined text-[#C59B27] text-[14px]">wb_twilight</span>
+<span class="">Nocturnal Sandstone Courtyard</span>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+<div class="flex flex-col">
+<span class="text-[#FFF9EE] font-title-md text-title-md drop-shadow font-semibold">Central Chowk &amp; Baithak</span>
+<span class="text-[#F3DCBA] font-label-sm text-label-sm tracking-wider drop-shadow">Natural Mineral Vegetable Pigment Frescoes</span>
+</div>
+
+</div>
+</div>
+<!-- Secondary Gallery Grid: Bedchamber & Lotus Kund Pool -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="relative aspect-[4/3] rounded-lg overflow-hidden border border-[#D8C7B0] bg-[#EFE8DC] group shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Opulent bedroom suite in Rajasthani royal haveli with intricately carved dark teak four-poster canopy bed, gold leaf ceiling frescoes, vibrant hand-woven rugs and stained glass jharokha alcoves" src="https://lh3.googleusercontent.com/aida/AEtjO1WlOKN_X3YHiehjXU-GpI75TuV5iwReAyOnGyyU8msXu-otDi74diD43yOSVQO1M-pEbeLXdiuIjy1SjgPMlKSWa3rwEffSZemDpg4YvsFUS_xmg_75uFIskSUA1tnI-85lebo4yX0TdNaXL97mBmZeh2jUA5hWX7bFkXIGf_ISpioaGDdN2w0gbo1oAgejZejD1HdGICfmMUBTxZtKddJ5cGrarQvYlAAREf6oVPHkKyiV5XJW3PJenok_">
+<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+<span class="absolute bottom-2 left-2 text-[#FFF9EE] font-label-sm text-label-sm font-medium drop-shadow">Fresco Bedchamber</span>
+</div>
+<div class="relative aspect-[4/3] rounded-lg overflow-hidden border border-[#D8C7B0] bg-[#EFE8DC] group shadow-sm">
+<img class="w-full h-full object-cover" data-alt="White marble stepwell plunge pool in Rajasthani palace courtyard with floating marigold and rose petals, glowing brass diya lamps around the steps and ancient stone elephant statues" src="https://lh3.googleusercontent.com/aida/AEtjO1UYcO1gDuGCUYNUBagFF5tRxnkIx74qbt_Z1_2Jtal-NlwpeYY6UlbAXj5ePkllGF2DGgZIkz3UetP88v3pkOICCDlnMgpisQapmCtHKMl3jPyapIGVZuOnP1uiOvcXzwO1C8kOAm8r865bazFtMTwrbEp4cKBXLuBvVfd66ckoMdZf1NwkMMPO7N-eFjpVvOYDbVL7nCTsFU1LB0eFFwmeR3HyiPH4HMmdFC-r-kZI5HCIMegbQgIbR8O5">
+<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 text-[#F3DCBA] font-label-sm text-label-sm font-medium drop-shadow">
+<span class="material-symbols-outlined text-[#E3BA7E] text-[13px]">water_drop</span>
+<span class="">Marble Petal Kund</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Custodian & Living Lineage Narrative -->
+<section class="px-gutter-sm mt-space-lg">
+<div class="relative rounded-xl p-space-md bg-[#FAF7F2] border border-[#D8C7B0] shadow-sm overflow-hidden">
+<!-- Top Subtle Palace Inlay Accent -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#C59B27] to-transparent opacity-80"></div>
+<div class="flex items-start gap-space-md">
+<div class="relative shrink-0">
+<img alt="Thakur Vikram Singh Mandawa" class="w-16 h-16 rounded-full object-cover shadow-md border-2 border-[#DECFBA] bg-[#EDE4D3]" src="https://lh3.googleusercontent.com/aida/AEtjO1VznekaJbxkgPU5Qs-XYWoMtcvirFUgzKN5oraTbnUmffosH-KcZM3vvCHkwPlQWvqc8ro1rj0jL8eFsHM9tw7TorTSa6Hzi1q4Dl0enE6ZQzNC5sDLL55VKefPvESf4LIGYJP7hq9iv2E6eOg8SseOshVE3wyyWv7dFo0pKMblysXQFk8SMX9Pzuf9_LMbZwfaJVH4bkuJJ_d-HRx1q3gTSi2ep1JGm2tgTs0QbJpklLqnLwqCsywekdxh">
+<span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#B85827] flex items-center justify-center text-[#FFFDFC] shadow-sm">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-[#8C581E] font-bold">Hereditary Guardian</span>
+<span class="w-1 h-1 rounded-full bg-[#C59B27]"></span>
+<span class="font-label-sm text-label-sm text-[#B85827] font-semibold">6th Generation</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-[#2C2218] truncate font-semibold">Thakur Vikram Singh Mandawa</h2>
+<p class="font-label-md text-label-md text-[#6E5D4B] mt-0.5">Dharohar Heritage Covenant Signatory</p>
+</div>
+</div>
+<!-- Welcome Quote in Traditional Haveli Etiquette -->
+<div class="mt-space-sm p-space-sm rounded-lg bg-[#F3EBDD] border border-[#D8C7B0] text-[#3D2F22]">
+<p class="font-body-sm text-body-sm italic leading-relaxed text-[#5F4B38] font-medium">
+          “Our haveli has guarded living Shekhawati frescoes and Satvik culinary secrets uninterrupted since 1756. We unlock our inner sanctum courtyard exclusively to mindful patrons seeking sacred solace.”
+        </p>
+</div>
+<!-- Verification Badges & Custodian Direct Channel -->
+<div class="mt-space-sm pt-space-xs flex flex-wrap items-center justify-between gap-space-xs border-t border-[#D8C7B0]">
+<div class="flex items-center gap-space-xs">
+<div class="flex items-center gap-1 text-[#3D2F22] text-label-sm font-label-sm font-medium">
+<span class="material-symbols-outlined text-[#B85827] text-[15px]">badge</span>
+
+</div>
+</div>
+<a class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#EDE4D3] border border-[#CBB79C] text-[#8C3A0D] hover:text-[#FFFDFC] hover:bg-[#B85827] transition-all font-label-md text-label-md shadow-sm font-semibold" href="tel:+911592223108">
+<span class="material-symbols-outlined text-[15px]">phone_in_talk</span>
+<span class="">Haveli Helpline: +91 1592 223 108</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Suite Selection & Heritage Privileges -->
+<section class="px-gutter-sm mt-space-lg">
+<div class="flex items-center justify-between mb-space-xs">
+<div>
+<span class="font-label-sm text-label-sm text-[#8C581E] uppercase tracking-wider font-bold">Reserved Sanctuary Suite</span>
+<h2 class="font-headline-sm text-headline-sm text-[#8C3A0D]">Royal Jharokha Fresco Suite</h2>
+</div>
+
+</div>
+<!-- Suite Feature Card -->
+<div class="rounded-xl p-space-md bg-[#FAF7F2] border border-[#D8C7B0] shadow-sm flex flex-col gap-space-md">
+<!-- Architectural Highlights Grid -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="p-space-xs rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex items-start gap-2">
+<span class="material-symbols-outlined text-[#B85827] text-[20px] mt-0.5">bed</span>
+<div>
+<p class="font-label-md text-label-md font-semibold text-[#2C2218]">Queen Teak 4-Poster</p>
+<p class="font-body-sm text-body-sm text-[#6E5D4B]">Organic Mulberry Silk Bedding</p>
+</div>
+</div>
+<div class="p-space-xs rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex items-start gap-2">
+<span class="material-symbols-outlined text-[#B85827] text-[20px] mt-0.5">balcony</span>
+<div>
+<p class="font-label-md text-label-md font-semibold text-[#2C2218]">Private Marble Jharokha</p>
+<p class="font-body-sm text-body-sm text-[#6E5D4B]">Overlooks Lotus Diya Kund</p>
+</div>
+</div>
+<div class="p-space-xs rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex items-start gap-2">
+<span class="material-symbols-outlined text-[#B85827] text-[20px] mt-0.5">palette</span>
+<div>
+<p class="font-label-md text-label-md font-semibold text-[#2C2218]">Gold Leaf Murals</p>
+<p class="font-body-sm text-body-sm text-[#6E5D4B]">Original 1780 Natural Pigments</p>
+</div>
+</div>
+<div class="p-space-xs rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex items-start gap-2">
+<span class="material-symbols-outlined text-[#B85827] text-[20px] mt-0.5">bathtub</span>
+<div>
+<p class="font-label-md text-label-md font-semibold text-[#2C2218]">Hammered Copper Tub</p>
+<p class="font-body-sm text-body-sm text-[#6E5D4B]">Ayurvedic Vetiver Infusions</p>
+</div>
+</div>
+</div>
+<!-- Royal Atithi Inclusions -->
+<div class="rounded-lg p-space-sm bg-[#F3EBDD] border border-[#D8C7B0] flex flex-col gap-space-xs">
+<div class="flex items-center gap-1.5 text-[#8C3A0D]">
+<span class="material-symbols-outlined text-[#C59B27] text-[18px]">crown</span>
+<span class="font-title-md text-title-md font-semibold">Included Heritage Privileges (Atithi Seva)</span>
+</div>
+<ul class="flex flex-col gap-2 mt-1">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#8C581E] text-[16px] mt-0.5">restaurant</span>
+<span class="font-body-sm text-body-sm text-[#3D2F22]">
+<strong class="text-[#8C3A0D] font-semibold">Grand Satvik Royal Breakfast &amp; Thali:</strong> Ancient slow-cooked Ker Sangri, bajra rotla, and saffron mawa khurchan prepared by the 4th generation khansama.
+            </span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#8C581E] text-[16px] mt-0.5">music_note</span>
+<span class="font-body-sm text-body-sm text-[#3D2F22]">
+<strong class="text-[#8C3A0D] font-semibold">Sundown Manganiyar Folk Baithak:</strong> Live Sarangi and Kamaicha performance in the Diwan-e-Khas with chilled rose vetiver sherbet.
+            </span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#8C581E] text-[16px] mt-0.5">brush</span>
+<span class="font-body-sm text-body-sm text-[#3D2F22]">
+<strong class="text-[#8C3A0D] font-semibold">Private Fresco Masterclass:</strong> 90-minute intimate session with master Usta artisan grinding lapis lazuli and ochre mineral paints.
+            </span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#8C581E] text-[16px] mt-0.5">concierge</span>
+<span class="font-body-sm text-body-sm text-[#3D2F22]">
+<strong class="text-[#8C3A0D] font-semibold">Atithi Devo Bhava Attendant:</strong> Dedicated private valet for temple walks and stepwell night visits.
+            </span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Patron Reviews & Authentication Module -->
+<section class="px-gutter-sm mt-space-lg">
+<!-- Aggregate Rating Header -->
+<div class="flex items-center justify-between mb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-[#2C2218]">Patron Testimonials</h2>
+<span class="font-label-md text-label-md text-[#8C581E] font-semibold tracking-wide">184 Verified Stays</span>
+</div>
+<!-- Rating Summary Scorecard -->
+<div class="p-space-md rounded-xl bg-[#FAF7F2] border border-[#D8C7B0] shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] min-w-[88px] text-center">
+<span class="font-headline-md text-headline-md text-[#8C3A0D] leading-none font-bold">4.9</span>
+<div class="flex items-center justify-center gap-0.5 text-[#C59B27] mt-1">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#6E5D4B] uppercase mt-1 font-bold">Exceptional</span>
+</div>
+<!-- Category Progress Bars -->
+<div class="flex flex-col gap-1.5 flex-1 min-w-0">
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-0.5">
+<span class="text-[#3D2F22] font-medium">Authenticity &amp; Frescoes</span>
+<span class="text-[#B85827] font-bold">5.0</span>
+</div>
+<div class="w-full h-1.5 bg-[#E8DED1] rounded-full overflow-hidden">
+<div class="h-full bg-[#B85827] rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-0.5">
+<span class="text-[#3D2F22] font-medium">Satvik Hospitality &amp; Dining</span>
+<span class="text-[#B85827] font-bold">4.9</span>
+</div>
+<div class="w-full h-1.5 bg-[#E8DED1] rounded-full overflow-hidden">
+<div class="h-full bg-[#B85827] rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-0.5">
+<span class="text-[#3D2F22] font-medium">Sanctuary Peace &amp; Ambience</span>
+<span class="text-[#B85827] font-bold">4.9</span>
+</div>
+<div class="w-full h-1.5 bg-[#E8DED1] rounded-full overflow-hidden">
+<div class="h-full bg-[#B85827] rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm mb-0.5">
+<span class="text-[#3D2F22] font-medium">Cleanliness &amp; Comfort</span>
+<span class="text-[#B85827] font-bold">4.8</span>
+</div>
+<div class="w-full h-1.5 bg-[#E8DED1] rounded-full overflow-hidden">
+<div class="h-full bg-[#B85827] rounded-full" style="width: 96%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Individual Testimonial Cards -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Review 1 -->
+<div class="p-space-sm rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-full bg-[#EBDBC4] text-[#8C3A0D] border border-[#D8C7B0] flex items-center justify-center font-label-sm text-label-sm font-bold">AS</span>
+<span class="font-title-md text-title-md text-[#2C2218] font-semibold">Aditi S.</span>
+<span class="text-[#8C581E] text-[12px] font-medium">• Mumbai</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#6E5D4B] font-medium">Oct 2025</span>
+</div>
+<div class="flex text-[#C59B27]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#5F4B38] mt-1 leading-normal">
+            “A transcendental immersion. Dining under the frescoed arches with live sarangi was breathtaking. The Satvik Ker Sangri prepared by their 4th generation khansama is unforgettable.”
+          </p>
+</div>
+<!-- Review 2 -->
+<div class="p-space-sm rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-full bg-[#EBDBC4] text-[#8C3A0D] border border-[#D8C7B0] flex items-center justify-center font-label-sm text-label-sm font-bold">JM</span>
+<span class="font-title-md text-title-md text-[#2C2218] font-semibold">Julian &amp; Elena M.</span>
+<span class="text-[#8C581E] text-[12px] font-medium">• Paris, France</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#6E5D4B] font-medium">Nov 2025</span>
+</div>
+<div class="flex text-[#C59B27]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#5F4B38] mt-1 leading-normal">
+            “Unlike commercial luxury hotels, Rawla Mandawa is living poetry. Thakur Vikram Singhji personally guided us through the private mural libraries. Absolute sanctuary.”
+          </p>
+</div>
+<!-- Review 3 -->
+<div class="p-space-sm rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-full bg-[#EBDBC4] text-[#8C3A0D] border border-[#D8C7B0] flex items-center justify-center font-label-sm text-label-sm font-bold">HR</span>
+<span class="font-title-md text-title-md text-[#2C2218] font-semibold">Col. Harshvardhan R.</span>
+<span class="text-[#8C581E] text-[12px] font-medium">• Jaipur</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#6E5D4B] font-medium">Sep 2025</span>
+</div>
+<div class="flex text-[#C59B27]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#5F4B38] mt-1 leading-normal">
+            “Impeccably preserved architectural relic. Quiet, restorative, and deeply respectful of Indian traditions.”
+          </p>
+</div>
+</div>
+<div class="mt-space-sm pt-space-sm border-t border-[#D8C7B0] flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-md text-label-md font-bold text-[#8C3A0D] uppercase tracking-wider">Leave Your Patron Review</span><div class="flex items-center gap-1 bg-[#F4EDE0] border border-[#DECFBA] px-2 py-0.5 rounded-full text-[#8C581E] text-label-sm font-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-[#B85827]"></span><span class="">Verified Patron</span></div></div><div class="p-space-sm rounded-lg bg-[#F4EDE0] border border-[#D8C7B0] flex flex-col gap-space-xs"><div class="flex items-center justify-between flex-wrap gap-1"><span class="font-label-sm text-label-sm text-[#5F4B38] font-semibold" id="ratingFeedbackLabel">Your Rating: 3 / 5 Stars</span><div class="flex items-center gap-1 text-[#C59B27] cursor-pointer" id="starRatingGroup"><button type="button" aria-label="1 Star" class="text-[#C59B27] hover:scale-110 transition-transform" onclick="const stars=this.parentElement.querySelectorAll('span'); stars.forEach((s,idx)=&gt;{ s.style.fontVariationSettings = idx &lt; 1 ? '\'FILL\' 1' : '\'FILL\' 0'; s.className = idx &lt; 1 ? 'material-symbols-outlined text-[20px] text-[#C59B27]' : 'material-symbols-outlined text-[20px] text-[#CBB79C]'; }); document.getElementById('ratingFeedbackLabel').innerText='Your Rating: 1 / 5 Stars';"><span class="material-symbols-outlined text-[20px] text-[#C59B27]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span></button><button type="button" aria-label="2 Stars" class="text-[#C59B27] hover:scale-110 transition-transform" onclick="const stars=this.parentElement.querySelectorAll('span'); stars.forEach((s,idx)=&gt;{ s.style.fontVariationSettings = idx &lt; 2 ? '\'FILL\' 1' : '\'FILL\' 0'; s.className = idx &lt; 2 ? 'material-symbols-outlined text-[20px] text-[#C59B27]' : 'material-symbols-outlined text-[20px] text-[#CBB79C]'; }); document.getElementById('ratingFeedbackLabel').innerText='Your Rating: 2 / 5 Stars';"><span class="material-symbols-outlined text-[20px] text-[#C59B27]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span></button><button type="button" aria-label="3 Stars" class="text-[#C59B27] hover:scale-110 transition-transform" onclick="const stars=this.parentElement.querySelectorAll('span'); stars.forEach((s,idx)=&gt;{ s.style.fontVariationSettings = idx &lt; 3 ? '\'FILL\' 1' : '\'FILL\' 0'; s.className = idx &lt; 3 ? 'material-symbols-outlined text-[20px] text-[#C59B27]' : 'material-symbols-outlined text-[20px] text-[#CBB79C]'; }); document.getElementById('ratingFeedbackLabel').innerText='Your Rating: 3 / 5 Stars';"><span class="material-symbols-outlined text-[20px] text-[#C59B27]" style="font-variation-settings: &quot;FILL&quot; 1;">star</span></button><button type="button" aria-label="4 Stars" class="text-[#C59B27] hover:scale-110 transition-transform" onclick="const stars=this.parentElement.querySelectorAll('span'); stars.forEach((s,idx)=&gt;{ s.style.fontVariationSettings = idx &lt; 4 ? '\'FILL\' 1' : '\'FILL\' 0'; s.className = idx &lt; 4 ? 'material-symbols-outlined text-[20px] text-[#C59B27]' : 'material-symbols-outlined text-[20px] text-[#CBB79C]'; }); document.getElementById('ratingFeedbackLabel').innerText='Your Rating: 4 / 5 Stars';"><span class="material-symbols-outlined text-[20px] text-[#CBB79C]" style="font-variation-settings: &quot;FILL&quot; 0;">star</span></button><button type="button" aria-label="5 Stars" class="text-[#C59B27] hover:scale-110 transition-transform" onclick="const stars=this.parentElement.querySelectorAll('span'); stars.forEach((s,idx)=&gt;{ s.style.fontVariationSettings = idx &lt; 5 ? '\'FILL\' 1' : '\'FILL\' 0'; s.className = idx &lt; 5 ? 'material-symbols-outlined text-[20px] text-[#C59B27]' : 'material-symbols-outlined text-[20px] text-[#CBB79C]'; }); document.getElementById('ratingFeedbackLabel').innerText='Your Rating: 5 / 5 Stars';"><span class="material-symbols-outlined text-[20px] text-[#CBB79C]" style="font-variation-settings: &quot;FILL&quot; 0;">star</span></button></div></div><textarea id="patronReviewText" rows="3" class="w-full p-2.5 bg-[#FFFDFC] border border-[#CBB79C] rounded-lg font-body-sm text-body-sm text-[#2C2218] placeholder:text-[#9E8B75] focus:outline-none focus:ring-2 focus:ring-[#B85827] focus:border-[#B85827] transition-all resize-none" placeholder="Talk about your experience and let others know!"></textarea><div class="flex items-center justify-between gap-2 pt-0.5"><span class="text-[12px] text-[#6E5D4B] font-medium hidden sm:inline-block">Preserved in the haveli archives</span><button id="submitPatronReviewBtn" type="button" class="px-4 py-2 rounded-lg bg-[#B85827] hover:bg-[#8C3A0D] active:scale-95 text-[#FFFDFC] font-label-md text-label-md font-bold shadow-sm transition-all flex items-center justify-center gap-1.5 ml-auto" onclick="const txt = document.getElementById('patronReviewText'); if(txt.value.trim()){ this.innerHTML='&lt;span class=\'material-symbols-outlined text-[16px]\'&gt;check_circle&lt;/span&gt;&lt;span&gt;Feedback Recorded&lt;/span&gt;'; this.className='px-4 py-2 rounded-lg bg-[#2C6E49] text-[#FFFDFC] font-label-md text-label-md font-bold shadow-sm transition-all flex items-center justify-center gap-1.5 ml-auto pointer-events-none'; txt.disabled = true; } else { txt.focus(); }"><span class="material-symbols-outlined text-[16px]">rate_review</span><span class="">Save &amp; Submit Feedback</span></button></div></div></div>
+</div>
+</section>
+<!-- Pricing Breakdown & Applied Dharohar Voucher Section -->
+<section class="px-gutter-sm mt-space-lg mb-space-md">
+<div class="rounded-xl p-space-md bg-[#FAF7F2] border border-[#D8C7B0] shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-[#2C2218] font-semibold">Tariff &amp; Endowment Breakdown</span>
+
+</div>
+<!-- Claim Heritage Quest Voucher Promo Input Box -->
+<div class="rounded-lg p-space-sm bg-[#F4EDE0] border border-[#D8C7B0] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-[#8C3A0D]">
+<span class="material-symbols-outlined text-[18px]">confirmation_number</span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider text-[#2C2218]">Claim Heritage Quest Voucher</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[#8C3A0D] font-label-sm text-label-sm font-bold bg-[#F5E6CC] px-2 py-0.5 rounded-full border border-[#DFC295]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#B85827] animate-ping"></span>UPTO 20% OFF&nbsp;</span>
+</div>
+<p class="font-body-sm text-body-sm text-[#6E5D4B]">
+    Won a voucher playing the Dharohar Heritage Quest? Enter your coupon code above to claim up to 20% off your booking.
+  </p>
+<div class="flex items-center gap-2 mt-0.5">
+<div class="relative flex-1">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-[#8C581E]/80">
+<span class="material-symbols-outlined text-[18px]">loyalty</span>
+</span>
+<input class="w-full pl-9 pr-3 py-2 bg-[#FFFDFC] border border-[#CBB79C] rounded-lg font-label-md text-label-md uppercase tracking-wider font-semibold text-[#2C2218] placeholder:text-[#9E8B75] focus:outline-none focus:ring-2 focus:ring-[#B85827] focus:border-[#B85827] transition-all" id="questVoucherInput" placeholder="e.g. QUEST20 or DHAROHAR20" type="text" value="QUEST20">
+</div>
+<button class="px-4 py-2 rounded-lg bg-[#B85827] hover:bg-[#8C3A0D] active:scale-95 text-[#FFFDFC] font-label-md text-label-md font-bold shadow-sm transition-all flex items-center gap-1 shrink-0" type="button">
+<span class="">Applied</span>
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-space-xs font-body-sm text-body-sm">
+
+<!-- Applied Quest Discount -->
+<div class="flex justify-between items-center p-2 rounded bg-[#FAF1E3] border border-[#DECFBA] text-[#8C581E]">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#B85827] text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-[#8C3A0D]">Dharohar Traditions Quest Voucher&nbsp;</span>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="flex justify-between items-center text-[#6E5D4B]">
+<div class="flex items-center gap-1">
+<span class="">Living Heritage Restoration Endowment</span>
+
+</div>
+<span class="text-[#8C3A0D] font-semibold">Included</span>
+</div>
+<div class="flex justify-between items-center text-[#6E5D4B]">
+<span class="">Royal Satvik Meals &amp; Cultural Experiences</span>
+<span class="text-[#8C3A0D] font-semibold">Complimentary</span>
+</div>
+<!-- Total Sum -->
+<div class="pt-space-sm mt-1 flex justify-between items-baseline border-t border-[#D8C7B0]">
+<div>
+<span class="font-title-lg text-title-lg text-[#8C3A0D] font-bold">Total Sovereign Investment</span>
+<p class="font-label-sm text-label-sm text-[#6E5D4B]">All taxes, Satvik meals &amp; endowments included</p>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm text-[#8C3A0D] font-bold">₹68,600</span>
+<p class="font-label-sm text-label-sm text-[#8C581E] font-medium">₹9,800 / night net</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky One-Tap Reservation Action Dock -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-xl border-t border-[#D8C7B0] shadow-[0_-8px_30px_rgba(140,88,30,0.1)] px-gutter-sm py-space-sm pb-safe">
+<div class="max-w-md mx-auto flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-space-sm">
+<!-- Price Snapshot -->
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm text-[#8C3A0D] font-bold">₹9,800</span>
+<span class="font-body-sm text-body-sm text-[#6E5D4B]">/ night</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="px-1.5 py-0.2 rounded bg-[#F5E6CC] border border-[#DFC295] text-[#593108] font-label-sm text-label-sm uppercase font-bold">coupon applied</span>
+
+</div>
+</div>
+<!-- Glowing Royal Action Button -->
+<button class="flex-1 max-w-[220px] py-3.5 px-4 rounded-xl bg-[#2C6E49] text-[#FFFDFC] font-label-lg text-label-lg font-bold shadow-md pointer-events-none transition-all flex items-center justify-center gap-1.5 text-center" type="button" onclick="this.innerHTML='&lt;span class=&quot;material-symbols-outlined text-[18px]&quot;&gt;check_circle&lt;/span&gt;&lt;span&gt;BOOKED ✓&lt;/span&gt;'; this.className='flex-1 max-w-[220px] py-3.5 px-4 rounded-xl bg-[#2C6E49] text-[#FFFDFC] font-label-lg text-label-lg font-bold shadow-md pointer-events-none transition-all flex items-center justify-center gap-1.5 text-center';"><span class="material-symbols-outlined text-[18px]">check_circle</span><span class="">BOOKED ✓</span></button>
+</div>
+<!-- Trust Assurance Footnote -->
+<div class="flex items-center justify-center gap-1.5 text-[#6E5D4B] font-label-sm text-label-sm text-center">
+<span class="material-symbols-outlined text-[13px] text-[#B85827]">verified_user</span>
+<span class="">Free cancellation up to 48 hrs prior • 85% goes directly to haveli restoration</span>
+</div>
+</div>
+</div>
+</div></main>
+
+
+
+
+
+
+
+</body></html>

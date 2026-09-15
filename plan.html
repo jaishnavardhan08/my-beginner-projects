@@ -1,0 +1,1146 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-secondary-container": "#ffa080",
+          "on-primary-container": "#5e3f00",
+          "inverse-primary": "#805600",
+          "on-primary-fixed-variant": "#614000",
+          "surface-dim": "#141120",
+          "on-tertiary-fixed-variant": "#5b4300",
+          "surface-variant": "#363243",
+          "on-error": "#690005",
+          "surface-tint": "#fcbb4e",
+          "primary-container": "#e6a73c",
+          "background": "#141120",
+          "surface-container-high": "#2b2838",
+          "on-surface": "#e6dff5",
+          "primary-fixed-dim": "#fcbb4e",
+          "secondary-container": "#832c07",
+          "on-tertiary-fixed": "#261a00",
+          "on-background": "#e6dff5",
+          "tertiary-container": "#d7ad4f",
+          "surface-container": "#211d2d",
+          "on-tertiary-container": "#594100",
+          "primary": "#ffc467",
+          "secondary": "#ffb59c",
+          "on-secondary-fixed-variant": "#802a05",
+          "surface-container-lowest": "#0f0c1b",
+          "tertiary": "#f5c867",
+          "on-tertiary": "#3f2e00",
+          "tertiary-fixed-dim": "#ecc160",
+          "outline": "#9d8e7c",
+          "on-secondary": "#5c1900",
+          "outline-variant": "#504536",
+          "on-primary-fixed": "#281800",
+          "inverse-on-surface": "#322e3f",
+          "on-surface-variant": "#d5c4b0",
+          "secondary-fixed-dim": "#ffb59c",
+          "on-primary": "#442c00",
+          "surface-container-low": "#1d1929",
+          "tertiary-fixed": "#ffdf9e",
+          "inverse-surface": "#e6dff5",
+          "surface-container-highest": "#363243",
+          "error": "#ffb4ab",
+          "surface-bright": "#3b3748",
+          "on-secondary-fixed": "#390c00",
+          "secondary-fixed": "#ffdbcf",
+          "error-container": "#93000a",
+          "on-error-container": "#ffdad6",
+          "primary-fixed": "#ffddb0",
+          "surface": "#141120"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "fontFamily": {
+          "display-md": ["Playfair Display", "serif"],
+          "display-lg": ["Playfair Display", "serif"],
+          "headline-lg": ["Playfair Display", "serif"],
+          "headline-md": ["Playfair Display", "serif"],
+          "headline-sm": ["Playfair Display", "serif"],
+          "title-lg": ["Playfair Display", "serif"],
+          "title-md": ["Manrope", "sans-serif"],
+          "body-lg": ["Manrope", "sans-serif"],
+          "body-md": ["Manrope", "sans-serif"],
+          "body-sm": ["Manrope", "sans-serif"],
+          "label-lg": ["Manrope", "sans-serif"],
+          "label-md": ["Manrope", "sans-serif"],
+          "label-sm": ["Manrope", "sans-serif"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #0f0c1b;
+        color: #e6dff5;
+      }
+      body {
+        overscroll-behavior-y: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    ::-webkit-scrollbar { display: none; }
+    @keyframes soundwave {
+      0%, 100% { height: 4px; }
+      50% { height: 14px; }
+    }
+    .wave-bar-1 { animation: soundwave 1.2s ease-in-out infinite; }
+    .wave-bar-2 { animation: soundwave 0.8s ease-in-out 0.2s infinite; }
+    .wave-bar-3 { animation: soundwave 1.4s ease-in-out 0.4s infinite; }
+    .wave-bar-4 { animation: soundwave 1s ease-in-out 0.1s infinite; }
+
+    /* Custom Radio & Checkbox styling */
+    input[type="radio"]:checked, input[type="checkbox"]:checked {
+      accent-color: #f5c867;
+    }
+
+    /* Interactive Calendar Days Styles */
+    .cal-day-btn {
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    .cal-day-btn:hover:not(.is-departure):not(.is-return) {
+      background-color: rgba(230, 167, 60, 0.25) !important;
+      color: #ffc467 !important;
+      border-color: rgba(230, 167, 60, 0.6) !important;
+    }
+  </style>
+</head>
+<body class="bg-[#0f0c1b] font-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary/30 selection:text-primary">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 pt-safe bg-[#141120]/90 backdrop-blur-xl border-b border-[#e6a73c]/20 shadow-2xl">
+<div class="h-20 px-5 flex items-center justify-between gap-3 max-w-4xl mx-auto">
+<div class="flex items-center gap-3 min-w-0 flex-shrink-0">
+<img alt="Dharohar Heritage Emblem" class="h-8 w-auto object-contain filter drop-shadow-[0_0_10px_rgba(230,167,60,0.5)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxWqceVgVHSHRrmVvnGXLOxj_favHk8cSpwagYmbhUFmFUoysBNpv8KCBs9Db2rjWoTUE7TL08ZTN_WoOouHCY7jFYOAG9F_xczkKbpVj9-e-F4dK8BrAFGIdtQWvJVp60FxGi2qBvUBm8bizoErdMWhm7FyMJe_X4UfUNlXV8E3AtXAwJ8XZ0HrxRaf18GkkIORgfwrgnzkHsEixlmoj5hkgnpDoa2nE1djsXL9LksuzYu3wHF1eXvA">
+<div class="flex flex-col">
+<span class="font-headline-sm text-lg font-semibold tracking-wide text-[#fdfbf7] leading-none">Dharohar</span>
+<span class="font-label-sm text-[10px] text-primary tracking-widest uppercase mt-1">Cultural Journeys</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<button aria-label="Explore Search" class="w-9 h-9 flex items-center justify-center rounded-full bg-[#1d1929] border border-[#e6a73c]/25 hover:border-primary/50 text-[#c8c2b5] hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</button>
+<div class="flex items-center justify-center">
+<img alt="Official Dharohar Guest Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-[#e6a73c]/50 shadow-[0_0_12px_rgba(230,167,60,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1W_SIyhlfl6Xv22uidN08N3v2nw2DM3qVhQNwIV_PAmUNxAwBywz2JSvwNay9qITyKIyNzQvQrr0diD4XTy5PQMyQ0HCNtp2rlaC42U04igNNRg53QY7zYNAp6sMDXeHIkMJw5WDBBDqJkl8aq96ryCnjunar2ygr_aZOLGyNlVnYXFtreZuQ6QgrjMQlnTeCA21Alh0EBIuBaEot7YjvNla9Apkt8guh5_nGXABEVabu7F_B620NnfIR1m">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex flex-col relative w-full pt-20 bg-[#0f0c1b] pb-32">
+<!-- Ambient Diya Lamp Lighting Effects (Obsidian Plum & Royal Gold Twilight) -->
+<div class="fixed top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#e6a73c]/15 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+<div class="fixed bottom-32 right-[-10%] w-80 h-80 bg-[#832c07]/25 rounded-full blur-[110px] pointer-events-none -z-10"></div>
+<div class="fixed top-1/2 left-[-15%] w-72 h-72 bg-[#2b263d]/40 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+<!-- Breadcrumb, Step & Hub Sub-Bar -->
+<div class="w-full px-5 py-3 bg-[#141120]/90 backdrop-blur-md sticky top-20 z-30 border-b border-[#e6a73c]/20">
+<div class="max-w-4xl mx-auto flex items-center justify-between gap-2">
+<a class="flex items-center gap-1.5 text-[#c8c2b5] hover:text-primary transition-colors py-1" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span class="font-label-md text-xs tracking-wider">Hub / यात्रा योजना</span>
+</a>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#f5c867]"></span>
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest bg-[#242033] border border-[#e6a73c]/35 px-2.5 py-1 rounded-full font-semibold shadow-sm">
+            शाही यात्रा योजना • Step 1 of 3
+          </span>
+</div>
+</div>
+</div>
+<div class="max-w-4xl mx-auto w-full px-4 sm:px-6 py-5 flex flex-col gap-6">
+<!-- Hero Showcase Alcove -->
+<div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#e6a73c]/30 bg-[#1d1929]">
+<div class="relative h-64 sm:h-72 w-full bg-cover bg-center" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAIWj4A5CqDD77lxcEAlB3g5hbUGT8CKnlkSciiGDjCbQHTYFEpe57jPSds6Vpuf2DReImjNbZLQ_sE1xKRXfqzZs-Box4DlCg7A7NU-WmHhDKZP7FsLV2m7h6UWmM7Rb-3NmapcTh5_RQli1nxejay_6r_MmcAlQO24gPt3qm2jAmCmkUBErIhwMaoPKXUtsTaFi23J5WGNKnfkdy6uAdU7Bn5gkHNFR0JzJjtpdp3ADwozwMZtI-arg&quot;);">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0f0c1b] via-[#141120]/75 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#0f0c1b]/95 via-[#141120]/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-primary text-[18px]">auto_awesome</span>
+<span class="font-label-sm text-[11px] text-primary uppercase tracking-widest font-semibold">Bespoke Royal Curation</span>
+</div>
+<h1 class="font-headline-lg text-2xl sm:text-3xl text-[#fdfbf7] font-medium leading-snug">
+              Weave Your Sacred Itinerary Across India
+            </h1>
+<p class="font-body-sm text-xs sm:text-sm text-[#c8c2b5] line-clamp-2 sm:line-clamp-none max-w-2xl mt-0.5">
+              Answer a few mindful questions so that DHAROHAR can curate bespoke havelis, and sacred expeditions tailored to your journey...</p>
+</div>
+</div>
+<!-- Stepper Progress Segment Bar -->
+<div class="grid grid-cols-3 bg-[#141120] p-2 gap-2 border-t border-[#e6a73c]/20">
+<div class="flex items-center gap-2 bg-[#2b263d] px-3 py-2 rounded-xl border border-[#e6a73c]/50 shadow-[0_0_12px_rgba(230,167,60,0.15)]">
+<span class="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-[#0f0c1b] font-bold text-[11px]">1</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-xs text-primary font-semibold truncate">Companions &amp; Diet</span>
+<span class="text-[9px] text-[#ffa080] tracking-wider uppercase font-semibold">Current</span>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#1d1929]/70 border border-white/5 opacity-70">
+<span class="flex items-center justify-center w-5 h-5 rounded-full bg-[#2b263d] text-[#c8c2b5] text-[11px]">2</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-xs text-[#c8c2b5] truncate">Stay &amp; Specialties</span>
+<span class="text-[9px] text-outline tracking-wider uppercase">Next</span>
+</div>
+</div>
+<div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#1d1929]/70 border border-white/5 opacity-70">
+<span class="flex items-center justify-center w-5 h-5 rounded-full bg-[#2b263d] text-[#c8c2b5] text-[11px]">3</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-xs text-[#c8c2b5] truncate">Destinations</span>
+<span class="text-[9px] text-outline tracking-wider uppercase">Final</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Questionnaire Core Form -->
+<form class="flex flex-col gap-6" onsubmit="event.preventDefault();">
+<!-- SECTION 1: Traveling Companions -->
+<section class="flex flex-col gap-4 bg-[#1d1929] p-5 sm:p-6 rounded-2xl border border-[#e6a73c]/25 shadow-xl relative overflow-hidden">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-secondary tracking-widest uppercase font-semibold">Question 01</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-[#c8c2b5] font-medium">सहयात्री</span>
+</div>
+<h2 class="font-headline-sm text-xl text-[#fdfbf7] mt-1">Who are you travelling with?</h2>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-0.5">Select your entourage to match wing privacy and transport dynamics.</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px]">travel_explore</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-1">
+<!-- Option: Solo Seeker -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[110px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="companion" type="radio" value="solo">
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">person</span>
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors">Solo Seeker</span>
+</div>
+</div>
+<span class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Meditative solitude, spiritual sanctuaries &amp; quiet ateliers.</span>
+</div>
+</label>
+<!-- Option: Couple -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[110px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="companion" type="radio" value="couple">
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">favorite</span>
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors">Couple</span>
+</div>
+</div>
+<span class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Romantic candlelit courtyards, private jharokhas &amp; twilight palace dinners.</span>
+</div>
+</label>
+<!-- Option: Family with Elders & Kids (Pre-selected Active) -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#2b263d] border-2 border-primary/80 shadow-[0_0_18px_rgba(230,167,60,0.2)] cursor-pointer min-h-[110px]">
+<input checked="" class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="companion" type="radio" value="family">
+<div class="flex flex-col flex-1 pr-20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">diversity_3</span>
+<span class="font-title-md text-sm text-primary font-bold">Family with Elders &amp; Kids</span>
+</div>
+<span class="font-body-sm text-xs text-[#fdfbf7] mt-1.5 leading-relaxed">Spacious suites, gentle paces, ground access &amp; folklore storytelling.</span>
+</div>
+</label>
+<!-- Option: Friends Circle -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[110px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="companion" type="radio" value="friends">
+<div class="flex flex-col flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">groups</span>
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors">Circle of Friends / Business partners</span>
+</div>
+</div>
+<span class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Shared courtyards, group culinary workshops &amp; dusk heritage walks.</span>
+</div>
+</label>
+</div>
+</section>
+<!-- SECTION 2: Culinary & Dietary Preferences -->
+<section class="flex flex-col gap-4 bg-[#1d1929] p-5 sm:p-6 rounded-2xl border border-[#e6a73c]/25 shadow-xl">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-secondary tracking-widest uppercase font-semibold">Question 02</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-[#c8c2b5] font-medium">आहार व भोजन</span>
+</div>
+<h2 class="font-headline-sm text-xl text-[#fdfbf7] mt-1">Culinary &amp; Dietary Preferences</h2>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-0.5">Prepared with sacred integrity in pure copper &amp; ancestral clay ware.</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px]">restaurant_menu</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-1">
+<!-- Pure Veg (Pre-selected Active) -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#2b263d] border-2 border-primary/80 shadow-[0_0_18px_rgba(230,167,60,0.2)] cursor-pointer transition-all min-h-[105px]">
+<input checked="" class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="diet" type="radio" value="pure_veg">
+<div class="flex flex-col flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">eco</span>
+<span class="font-title-md text-sm text-primary font-bold">Pure Vegetarian (शाकाहारी)</span>
+</div>
+<span class="font-body-sm text-xs text-[#fdfbf7] mt-2 leading-relaxed">100% vegetarian satvik &amp; regional royal kitchen delicacies, slow-cooked in ancestral brass.</span>
+</div>
+</label>
+<!-- Sattvic / Jain Friendly -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[105px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="diet" type="radio" value="sattvic">
+<div class="flex flex-col flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">spa</span>
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors">Sattvic / Jain Friendly (सात्विक)</span>
+</div>
+<span class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">No root vegetables, onion, or garlic; adhering strictly to Vedic Ayurvedic principles.</span>
+</div>
+</label>
+<!-- Non-Vegetarian Royal Meats -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[105px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="diet" type="radio" value="non_veg">
+<div class="flex flex-col flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">set_meal</span>
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors">Non-vegetarian Royal Meats</span>
+</div>
+<span class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Authentic royal game recipes, slow-braised Laal Maas, Awadhi dum handi &amp; coastal seafood.</span>
+</div>
+</label>
+<!-- Custom / Vegan -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[105px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="diet" type="radio" value="vegan">
+<div class="flex flex-col flex-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">local_florist</span>
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors">Custom Dietary / Vegan (विशेष आहार)</span>
+</div>
+<span class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Plant-based, lactose-free, and personalized allergen-aware dining plans.</span>
+</div>
+</label>
+</div>
+</section>
+<!-- SECTION 3: Type of Residence -->
+<section class="flex flex-col gap-4 bg-[#1d1929] p-5 sm:p-6 rounded-2xl border border-[#e6a73c]/25 shadow-xl">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-secondary tracking-widest uppercase font-semibold">Question 03</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-[#c8c2b5] font-medium">निवास का प्रकार</span>
+</div>
+<h2 class="font-headline-sm text-xl text-[#fdfbf7] mt-1">What type of residence do you seek?</h2>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-0.5">Authentic historical estates managed by guardian lineages.</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px]">apartment</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-1">
+<!-- 1: Ancestral Haveli (Pre-selected Active) -->
+<label class="relative flex flex-col items-center justify-center text-center p-4 rounded-xl bg-[#2b263d] border-2 border-primary/80 shadow-[0_0_18px_rgba(230,167,60,0.2)] cursor-pointer min-h-[125px]">
+<input checked="" class="accent-primary w-4 h-4 mb-2 cursor-pointer" name="residence" type="radio" value="haveli">
+<span class="material-symbols-outlined text-primary text-[28px] mb-1">castle</span>
+<span class="font-title-md text-sm text-primary font-bold leading-tight">Ancestral Haveli</span>
+<span class="font-label-sm text-[10px] text-secondary mt-1">100+ Yrs Heritage</span>
+</label>
+<!-- 2: Royal Garh / Fort -->
+<label class="group relative flex flex-col items-center justify-center text-center p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="accent-primary w-4 h-4 mb-2 cursor-pointer" name="residence" type="radio" value="fort">
+<span class="material-symbols-outlined text-secondary text-[28px] mb-1 group-hover:text-primary transition-colors">fort</span>
+<span class="font-title-md text-sm text-[#fdfbf7] font-medium leading-tight group-hover:text-primary transition-colors">Royal Garh / Fort</span>
+<span class="font-label-sm text-[10px] text-[#c8c2b5] mt-1">Rampart Towers</span>
+</label>
+<!-- 3: Mountain Chalet / Hotels -->
+<label class="group relative flex flex-col items-center justify-center text-center p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="accent-primary w-4 h-4 mb-2 cursor-pointer" name="residence" type="radio" value="mountain">
+<span class="material-symbols-outlined text-secondary text-[28px] mb-1 group-hover:text-primary transition-colors">cottage</span>
+<span class="font-title-md text-sm text-[#fdfbf7] font-medium leading-tight group-hover:text-primary transition-colors">Classic Hotel</span>
+<span class="font-label-sm text-[10px] text-[#c8c2b5] mt-1">Cedar Solitude</span>
+</label>
+<!-- 4: Artisan Kothi -->
+<label class="group relative flex flex-col items-center justify-center text-center p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="accent-primary w-4 h-4 mb-2 cursor-pointer" name="residence" type="radio" value="artisan">
+<span class="material-symbols-outlined text-secondary text-[28px] mb-1 group-hover:text-primary transition-colors">palette</span>
+<span class="font-title-md text-sm text-[#fdfbf7] font-medium leading-tight group-hover:text-primary transition-colors">Artisan Kothi</span>
+<span class="font-label-sm text-[10px] text-[#c8c2b5] mt-1">Guild Ateliers</span>
+</label>
+<!-- 5: Boutique Resort -->
+<label class="group relative flex flex-col items-center justify-center text-center p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="accent-primary w-4 h-4 mb-2 cursor-pointer" name="residence" type="radio" value="resort">
+<span class="material-symbols-outlined text-secondary text-[28px] mb-1 group-hover:text-primary transition-colors">holiday_village</span>
+<span class="font-title-md text-sm text-[#fdfbf7] font-medium leading-tight group-hover:text-primary transition-colors">Boutique Resort</span>
+<span class="font-label-sm text-[10px] text-[#c8c2b5] mt-1">Palatial Modernity</span>
+</label>
+<!-- 6: Pilgrim Dharamshala -->
+<label class="group relative flex flex-col items-center justify-center text-center p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="accent-primary w-4 h-4 mb-2 cursor-pointer" name="residence" type="radio" value="dharamshala">
+<span class="material-symbols-outlined text-secondary text-[28px] mb-1 group-hover:text-primary transition-colors">temple_hindu</span>
+<span class="font-title-md text-sm text-[#fdfbf7] font-medium leading-tight group-hover:text-primary transition-colors">Seva Dharamshala</span>
+<span class="font-label-sm text-[10px] text-[#c8c2b5] mt-1">Sacred Ashrams</span>
+</label>
+<!-- 7: Living Custodians Homestay -->
+<label class="group relative flex flex-col items-center justify-center text-center p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px] col-span-2">
+<input class="accent-primary w-4 h-4 mb-2 cursor-pointer" name="residence" type="radio" value="homestay">
+<span class="material-symbols-outlined text-secondary text-[28px] mb-1 group-hover:text-primary transition-colors">house</span>
+<span class="font-title-md text-sm text-[#fdfbf7] font-medium leading-tight group-hover:text-primary transition-colors">Living Custodians Homestay</span>
+<span class="font-label-sm text-[10px] text-[#c8c2b5] mt-1">Direct Royal Host Families &amp; Fireside Stories</span>
+</label>
+</div>
+</section>
+<!-- SECTION 4: Desired Amenities & Specialties (Max 3 Selection UX with Enforced Counter) -->
+<section class="flex flex-col gap-4 bg-[#1d1929] p-5 sm:p-6 rounded-2xl border border-[#e6a73c]/25 shadow-xl" id="specialties-section">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-secondary tracking-widest uppercase font-semibold">Question 04</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-[#c8c2b5] font-medium">निवास की विशेषताएं</span>
+</div>
+<h2 class="font-headline-sm text-xl text-[#fdfbf7] mt-1">Desired Amenities &amp; Specialties</h2>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-0.5">Choose up to 3 sovereign experiences that elevate your royal sojourn.</p>
+</div>
+<!-- Interactive Counter Badge -->
+<div class="flex items-center gap-2 self-start sm:self-center">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#242033] border border-primary/50 shadow-sm" id="selection-counter-badge">
+<span class="material-symbols-outlined text-primary text-[16px]">verified</span>
+<span class="font-label-sm text-xs text-primary font-bold" id="amenity-counter-text">Selected: 3 / 3 Max</span>
+</div>
+</div>
+</div>
+<!-- Notice banner when maximum reached -->
+<div class="items-center justify-between gap-2 px-3.5 py-2 rounded-xl bg-primary/15 border border-primary/30 text-primary text-xs font-medium flex" id="amenity-limit-notice">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<span class="">Maximum of 3 specialties selected. Uncheck an option to choose a different one.</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1" id="amenities-container">
+<!-- 1: Pre-selected Active -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl cursor-pointer transition-all min-h-[64px] bg-[#2b263d] border-2 border-primary/80 shadow-[0_0_15px_rgba(230,167,60,0.18)]">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-primary">skillet</span>
+<span class="amenity-label font-title-md text-sm truncate text-primary font-bold">Celebrity &amp; Royal Chefs</span>
+</div>
+<input checked="" class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="chefs">
+</label>
+<!-- 2: Pre-selected Active -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl cursor-pointer transition-all min-h-[64px] bg-[#2b263d] border-2 border-primary/80 shadow-[0_0_15px_rgba(230,167,60,0.18)]">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-primary">self_improvement</span>
+<span class="amenity-label font-title-md text-sm truncate text-primary font-bold">Facilities like Spa &amp; Massages</span>
+</div>
+<input checked="" class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="spa">
+</label>
+<!-- 3: Pre-selected Active -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl cursor-pointer transition-all min-h-[64px] bg-[#2b263d] border-2 border-primary/80 shadow-[0_0_15px_rgba(230,167,60,0.18)]">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-primary">nature_people</span>
+<span class="amenity-label font-title-md text-sm truncate text-primary font-bold">Serene Birdsong &amp; Gardens</span>
+</div>
+<input checked="" class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="gardens">
+</label>
+<!-- 4: Unselected -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl border cursor-pointer transition-all min-h-[64px] bg-[#242033] border-[#e6a73c]/20 opacity-60">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-secondary">landscape</span>
+<span class="amenity-label font-title-md text-sm truncate text-[#c8c2b5]">Panoramic Mountain / Lake View</span>
+</div>
+<input class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="lake_view" disabled="">
+</label>
+<!-- 5: Unselected -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl border cursor-pointer transition-all min-h-[64px] bg-[#242033] border-[#e6a73c]/20 opacity-60">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-secondary">pool</span>
+<span class="amenity-label font-title-md text-sm truncate text-[#c8c2b5]">Ammenities like Jacuzzi &amp; Sauna</span>
+</div>
+<input class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="pool" disabled="">
+</label>
+<!-- 6: Unselected -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl border cursor-pointer transition-all min-h-[64px] bg-[#242033] border-[#e6a73c]/20 opacity-60">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-secondary">architecture</span>
+<span class="amenity-label font-title-md text-sm truncate text-[#c8c2b5]">Stunning infrastructural beauty</span>
+</div>
+<input class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="architecture" disabled="">
+</label>
+<!-- 7: Unselected -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl border cursor-pointer transition-all min-h-[64px] bg-[#242033] border-[#e6a73c]/20 opacity-60">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-secondary">military_tech</span>
+<span class="amenity-label font-title-md text-sm truncate text-[#c8c2b5]">Famous ex-guests &amp; Royal Legacy&nbsp;</span>
+</div>
+<input class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="legacy" disabled="">
+</label>
+<!-- 8: Unselected -->
+<label class="amenity-card group relative flex items-center justify-between gap-3 p-4 rounded-xl border cursor-pointer transition-all min-h-[64px] bg-[#242033] border-[#e6a73c]/20 opacity-60">
+<div class="flex items-center gap-3 min-w-0">
+<span class="amenity-icon material-symbols-outlined text-[22px] text-secondary">loyalty</span>
+<span class="amenity-label font-title-md text-sm truncate text-[#c8c2b5]">Atithi Devo Bhava Butler Service</span>
+</div>
+<input class="amenity-checkbox accent-primary w-4 h-4 cursor-pointer" type="checkbox" value="butler" disabled="">
+</label>
+</div>
+</section>
+<!-- SECTION 5: Regional Exploration Target -->
+<section class="flex flex-col gap-4 bg-[#1d1929] p-5 sm:p-6 rounded-2xl border border-[#e6a73c]/25 shadow-xl">
+<div class="flex items-start justify-between gap-3">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-secondary tracking-widest uppercase font-semibold">Question 05</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-[#c8c2b5] font-medium">भारत दर्शन व गंतव्य</span>
+</div>
+<h2 class="font-headline-sm text-xl text-[#fdfbf7] mt-1">What sacred realm will you explore?</h2>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-0.5">Each circuit is escorted by sovereign storytellers and master travellers.</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px]">map</span>
+</div>
+<div class="flex flex-col gap-3 mt-1"><!-- Destination 1: Royal Rajasthan & Thar Desert (Pre-selected Active) -->
+<label class="group relative flex flex-col rounded-2xl overflow-hidden bg-[#242033] border border-[#e6a73c]/20 shadow-sm cursor-pointer transition-all duration-300 hover:border-[#e6a73c]/50 hover:bg-[#2b263d]">
+<div class="h-36 sm:h-40 w-full relative overflow-hidden bg-[#141120]">
+<img alt="Royal Rajasthan Fort" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1ViETDoxs-ZNhzI8g2ATaRUFLbG6FiTtoGtoMwOHnlthH2oReP4YSb2weZ1JCGtDi5Xs7mhPpkeZ0lQJ4b2a40u68GwPn9Vh8hSEvWkwcQjSamJx-hkv3DJPpTPZxr8nSJ6-uXKQ2JwlAWJJyxzdDdL29eOAppGZD2NFJhACSmQFYg6W81kMp2_39quVx7aQ5zAZ18htK-svi8C7znGz2PhYW7H3viPdyEscbmtD4U7jRgnU75THYqrb2bU">
+<div class="absolute inset-0 bg-gradient-to-t from-[#242033] via-[#242033]/40 to-transparent"></div>
+<div class="absolute top-3 right-3">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest bg-[#141120]/90 border border-[#e6a73c]/35 px-3 py-1 rounded-full font-semibold shadow-sm backdrop-blur-md">HAUNTED CASTLES</span>
+</div>
+</div>
+<div class="p-4 flex items-start gap-3.5">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="destination_realm" type="radio" value="rajasthan">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-base sm:text-lg font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">
+          Royal Rajasthan &amp; Thar Desert
+        </h3>
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">castle</span>
+</div>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-1 leading-relaxed">
+        Shekhawati painted frescoes, Jodhpur blue alleys &amp; Udaipur lake palaces.
+      </p>
+</div>
+</div>
+</label>
+<!-- Destination 2: Sacred Ghats & Ganga Corridor -->
+<label class="group relative flex flex-col rounded-2xl overflow-hidden bg-[#242033] border border-[#e6a73c]/20 shadow-sm cursor-pointer transition-all duration-300 hover:border-[#e6a73c]/50 hover:bg-[#2b263d]">
+<div class="h-36 sm:h-40 w-full relative overflow-hidden bg-[#141120]">
+<img alt="Sacred Ghats Varanasi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Wx-IS--jTcQR9MfbmPtkw11FTEa4unwHd4f0kjlRyAHp0pzOiOJP14gS_SHlnWVIfREZt95vAKalBnnL9UlDYet53k76iTgLMN3vWPQYjqyDQM97PkN2LGq9eh2KmyaSCGQXUsAzpUXwtTaCTevzYJuP48F9NcaThHOf7N2cZAMqAM4EpkhEUwLLiCfn-miD-bGkVB35DA_lkvFQ2my9kwYpIMnNlfRGfazrCErDJbkTgQT4Y5i5tOLsgk">
+<div class="absolute inset-0 bg-gradient-to-t from-[#242033] via-[#242033]/40 to-transparent"></div>
+<div class="absolute top-3 right-3">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest bg-[#141120]/90 border border-[#e6a73c]/35 px-3 py-1 rounded-full font-semibold shadow-sm backdrop-blur-md">
+        Vedic Route
+      </span>
+</div>
+</div>
+<div class="p-4 flex items-start gap-3.5">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="destination_realm" type="radio" value="ganga">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-base sm:text-lg font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">
+          Sacred Ghats &amp; Ganga Corridor
+        </h3>
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">temple_hindu</span>
+</div>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-1 leading-relaxed">
+        Varanasi evening aarti boats, Prayagraj confluence &amp; Rishikesh Vedic meditation.
+      </p>
+</div>
+</div>
+</label>
+<!-- Destination 3: God's Own Country & Malabar -->
+<label class="group relative flex flex-col rounded-2xl overflow-hidden bg-[#242033] border border-[#e6a73c]/20 shadow-sm cursor-pointer transition-all duration-300 hover:border-[#e6a73c]/50 hover:bg-[#2b263d]">
+<div class="h-36 sm:h-40 w-full relative overflow-hidden bg-[#141120]">
+<img alt="Kerala Backwaters" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1VKzyX7fP7PQ7nanDbsgpEEojn_zrhVAr0CQL4e9UBjIvW0U0GqIWQ0emUjPRsjRKxo6KmY7nH3XsW33hZEg3FBQXZXuifUfjP8s350tc_OYlSeIM09mZSS_YCZXswhUXVmDUmCSRPV-5-Rpc8aUfZnZ6NuAmAqypqL1Fyu2wLo8hpCunEtqjJt1K7emAJhEYNpQiw4En-aAWsmAZba4xyvw29m35e3iKZeo5Hn64Ioey49Bfi51-h0rva4">
+<div class="absolute inset-0 bg-gradient-to-t from-[#242033] via-[#242033]/40 to-transparent"></div>
+<div class="absolute top-3 right-3">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest bg-[#141120]/90 border border-[#e6a73c]/35 px-3 py-1 rounded-full font-semibold shadow-sm backdrop-blur-md">
+        Waterways
+      </span>
+</div>
+</div>
+<div class="p-4 flex items-start gap-3.5">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="destination_realm" type="radio" value="malabar">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-base sm:text-lg font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">
+          God's Own Country &amp; Malabar
+        </h3>
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">houseboat</span>
+</div>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-1 leading-relaxed">
+        Alleppey wooden kettuvallam houseboats, Munnar cardamom hills &amp; Kathakali.
+      </p>
+</div>
+</div>
+</label>
+<!-- Destination 4: Himalayan Valleys & Spiti/Kashmir -->
+<label class="group relative flex flex-col rounded-2xl overflow-hidden bg-[#242033] border border-[#e6a73c]/20 shadow-sm cursor-pointer transition-all duration-300 hover:border-[#e6a73c]/50 hover:bg-[#2b263d]">
+<div class="h-36 sm:h-40 w-full relative overflow-hidden bg-[#141120]">
+<img alt="Himalayan Valleys" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1WI3NkxocJmkyn22W89AIC_XQLhCJYcVtKSf3SkZEZtcJFnPhueebc_gkQVF6a0zXUgPxoqJ4OzlLwUE3O_QPknYTXGWkTHepVnQqpMTVmBxz9AF7_cExTZYoL-1a1o_L61_uI2kx00ywItRUfXiZ5HfjYSgeEvimIVTlPr90eNJYqEtqQjeoOqmwj1MpZGzj21eSW69l14azJk9NIiCyDOq9hB7K1rba3muksg-ix08_pVPcO43af5qiL0">
+<div class="absolute inset-0 bg-gradient-to-t from-[#242033] via-[#242033]/40 to-transparent"></div>
+<div class="absolute top-3 right-3">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest bg-[#141120]/90 border border-[#e6a73c]/35 px-3 py-1 rounded-full font-semibold shadow-sm backdrop-blur-md">
+        Alpine Haven
+      </span>
+</div>
+</div>
+<div class="p-4 flex items-start gap-3.5">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="destination_realm" type="radio" value="himalaya">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-base sm:text-lg font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">
+          Himalayan Valleys &amp; Spiti/Kashmir
+        </h3>
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">landscape</span>
+</div>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-1 leading-relaxed">
+        Dharamshala cedar monasteries, Chamba pagoda temples &amp; Gulmarg pines.
+      </p>
+</div>
+</div>
+</label>
+<!-- Destination 5: Deccan & Dravidian Temple Wonders -->
+<label class="group relative flex flex-col rounded-2xl overflow-hidden bg-[#242033] border border-[#e6a73c]/20 shadow-sm cursor-pointer transition-all duration-300 hover:border-[#e6a73c]/50 hover:bg-[#2b263d]">
+<div class="h-36 sm:h-40 w-full relative overflow-hidden bg-[#141120]">
+<img alt="Dravidian Temple Hampi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1XtsCbcQvRd8dsWoafJO7AR-TTooN-Gp2jrEdRKN6rAG5SAUIv0yCfeVOkbixJbn5MBTmSISTwdLpxW414cBnx3llP5Bsrb04mFloDlwZ3GulOQ_lNrv52LTkuJY-3kGSH7jkwhCPrrcY2xdaFAbi8HDV1r06mhbMksG03I9Tdd3ORtLpsXIAyfNCzY7B-zv4Q_TuTImTdh3t6iJmHAs50BFl8c-Ij9AIAg5vfU6fJ5KNq-Aj1xQ0IDgPCB">
+<div class="absolute inset-0 bg-gradient-to-t from-[#242033] via-[#242033]/40 to-transparent"></div>
+<div class="absolute top-3 right-3">
+<span class="font-label-sm text-[10px] text-primary uppercase tracking-widest bg-[#141120]/90 border border-[#e6a73c]/35 px-3 py-1 rounded-full font-semibold shadow-sm backdrop-blur-md">
+        Living Antiquity
+      </span>
+</div>
+</div>
+<div class="p-4 flex items-start gap-3.5">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="destination_realm" type="radio" value="deccan">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<h3 class="font-headline-sm text-base sm:text-lg font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">
+          Deccan &amp; Dravidian Temple Wonders
+        </h3>
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">account_balance</span>
+</div>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-1 leading-relaxed">
+        Granite megaliths of Hampi, Madurai Meenakshi &amp; Chettinad tile mansions.
+      </p>
+</div>
+</div>
+</label></div>
+</section><!-- SECTION 7: Sacred Journey Dates (Dual Departure & Concluding Calendar Picker) -->
+<section class="flex flex-col gap-5 bg-[#1d1929] p-5 sm:p-6 rounded-2xl border border-[#e6a73c]/25 shadow-xl" id="budget-section">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-secondary tracking-widest uppercase font-semibold">Question 06</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-[#c8c2b5] font-medium">बजट व सांस्थानिक योगदान</span>
+</div>
+<h2 class="font-headline-sm text-xl text-[#fdfbf7] mt-1">Cultural Endowment &amp; Budget Range</h2>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-0.5">Select your preferred endowment tier&nbsp; cultural offerings.</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-[26px] self-start sm:self-center">currency_rupee</span>
+</div>
+<!-- Quick Range Selector Pills -->
+
+<!-- 4 Tier Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-1">
+<!-- Tier 1 -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="budget_tier" type="radio" value="pilgrim">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">Mindful Pilgrim / सात्विक साधक</span>
+</div>
+<span class="font-headline-sm text-base text-secondary font-semibold mt-0.5">₹15,000 – ₹35,000 <span class="text-[10px] font-normal text-[#c8c2b5]">/ patron</span></span>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Heritage dharamshalas, sacred haveli kothis, regional satvik dining &amp; community guild walks.</p>
+</div>
+</label>
+<!-- Tier 2 (Pre-selected Royal Connoisseur) -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#2b263d] border-2 border-primary/80 shadow-[0_0_18px_rgba(230,167,60,0.2)] cursor-pointer transition-all min-h-[125px]">
+<input checked="" class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="budget_tier" type="radio" value="connoisseur">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="font-title-md text-sm text-primary font-bold truncate">Royal Connoisseur / राजसी रसिक</span>
+</div>
+<span class="font-headline-sm text-base text-primary font-semibold mt-0.5">₹35,000 – ₹75,000 <span class="text-[10px] font-normal text-[#fdfbf7]">/ patron</span></span>
+<p class="font-body-sm text-xs text-[#fdfbf7] mt-2 leading-relaxed">Restored suites, private classical baithaks, palace dining &amp; artisan masterclasses.</p>
+</div>
+</label>
+<!-- Tier 3 -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="budget_tier" type="radio" value="maharaja">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">Exquisitie Explorer / छत्रपति गौरव</span>
+</div>
+<span class="font-headline-sm text-base text-secondary font-semibold mt-0.5">₹75,000 – ₹1,50,000 <span class="text-[10px] font-normal text-[#c8c2b5]">/ patron</span></span>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Personalised services, bespoke royal chef banquets, vintage chauffeured mobility &amp; historian escorts.</p>
+</div>
+</label>
+<!-- Tier 4 -->
+<label class="group relative flex items-start gap-3.5 p-4 rounded-xl bg-[#242033] border border-[#e6a73c]/20 hover:border-primary/50 hover:bg-[#2b263d] cursor-pointer transition-all min-h-[125px]">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer flex-shrink-0" name="budget_tier" type="radio" value="sovereign">
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-2">
+<span class="font-title-md text-sm font-semibold text-[#fdfbf7] group-hover:text-primary transition-colors truncate">Bespoke Sovereign Sanctuary / अनन्य शाही यात्रा</span>
+</div>
+<span class="font-headline-sm text-base text-secondary font-semibold mt-0.5">₹1,50,000+ <span class="text-[10px] font-normal text-[#c8c2b5]">/ patron</span></span>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-2 leading-relaxed">Exclusive whole-haveli buyout, private classical musicians, private aviation charter &amp; direct guild endowment fund patron status.</p>
+</div>
+</label>
+</div>
+<!-- Patron Endowment Direct Impact Banner -->
+<div class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-primary/15 border border-primary/30 text-primary text-xs font-medium">
+<span class="material-symbols-outlined text-[20px] flex-shrink-0 text-primary">volunteer_activism</span>
+<span class="leading-relaxed">85% of this sovereign endowment goes directly to living custodian families, folk musicians &amp; rural guild trusts across India.</span>
+</div>
+</section><section class="flex flex-col gap-5 bg-[#1d1929] p-5 sm:p-6 rounded-2xl border border-[#e6a73c]/25 shadow-xl" id="calendar-section">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-secondary tracking-widest uppercase font-semibold">तिथि चयन • Dates</span>
+<span class="h-1 w-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-[11px] text-[#c8c2b5] font-medium">यात्रा अवधि चक्र</span>
+</div>
+<h2 class="font-headline-sm text-xl text-[#fdfbf7] mt-1">Sacred Passage Dates &amp; Timings</h2>
+<p class="font-body-sm text-xs text-[#c8c2b5] mt-0.5">Select sovereign departure and return dates for auspicious haveli reception.</p>
+</div>
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242033] border border-[#e6a73c]/40 shadow-[0_0_12px_rgba(230,167,60,0.15)] self-start sm:self-auto">
+<span class="material-symbols-outlined text-primary text-[18px]">event_available</span>
+<span class="font-label-sm text-xs text-primary font-bold" id="total-span-badge">Total Span: 7 Nights / 8 Days</span>
+</div>
+</div>
+<!-- Dual Calendar Views Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-1">
+<!-- Departure Calendar Card -->
+<div class="flex flex-col gap-3.5 bg-[#242033] p-4 sm:p-5 rounded-xl border border-[#e6a73c]/30 shadow-md">
+<div class="flex items-center justify-between pb-3 border-b border-[#e6a73c]/15">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">flight_takeoff</span>
+<div>
+<span class="font-label-sm text-[10px] text-[#ffa080] uppercase tracking-widest block">Departure / प्रस्थान</span>
+<span class="font-title-md text-sm text-[#fdfbf7] font-bold" id="departure-summary-text">Fri, 14 Nov 2025</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-[#1d1929] px-2.5 py-1 rounded-lg border border-[#e6a73c]/25">
+<span class="font-label-sm text-xs text-primary font-semibold" id="dep-mini-month-tag">November 2025</span>
+</div>
+</div>
+<!-- Calendar Month Navigation & Year Selector -->
+<div class="flex items-center justify-between px-1">
+<button aria-label="Previous Month" class="w-7 h-7 flex items-center justify-center rounded bg-[#1d1929] hover:bg-[#2b263d] text-[#c8c2b5] hover:text-primary transition-colors border border-white/5 cursor-pointer" id="dep-prev-month" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<div class="flex items-center gap-1 font-title-md text-xs text-[#fdfbf7] font-semibold tracking-wide" id="dep-month-heading"><span id="dep-month-label" class="">November</span><label class="relative inline-flex items-center ml-1 cursor-pointer"><select id="dep-year-select" aria-label="Select Year" class="appearance-none bg-[#1d1929] text-primary border border-[#e6a73c]/35 hover:border-primary/60 focus:border-primary focus:ring-1 focus:ring-primary rounded px-2 py-0.5 pr-5 text-xs font-semibold cursor-pointer transition-colors"><option value="2024" class="bg-[#1d1929] text-[#fdfbf7]">2024</option><option value="2025" selected="" class="bg-[#1d1929] text-primary font-bold">2025</option><option value="2026" class="bg-[#1d1929] text-[#fdfbf7]">2026</option><option value="2027" class="bg-[#1d1929] text-[#fdfbf7]">2027</option><option value="2028" class="bg-[#1d1929] text-[#fdfbf7]">2028</option><option value="2029" class="bg-[#1d1929] text-[#fdfbf7]">2029</option><option value="2030" class="bg-[#1d1929] text-[#fdfbf7]">2030</option></select><span class="material-symbols-outlined text-[14px] text-secondary pointer-events-none absolute right-1">expand_more</span></label></div>
+<button aria-label="Next Month" class="w-7 h-7 flex items-center justify-center rounded bg-[#1d1929] hover:bg-[#2b263d] text-[#c8c2b5] hover:text-primary transition-colors border border-white/5 cursor-pointer" id="dep-next-month" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Weekdays Header -->
+<div class="grid grid-cols-7 gap-1 text-center font-label-sm text-[10px] text-outline font-semibold tracking-wider uppercase">
+<span class="">Su</span><span class="">Mo</span><span class="">Tu</span><span class="">We</span><span class="">Th</span><span class="">Fr</span><span class="">Sa</span>
+</div>
+<!-- Days Grid container dynamically filled -->
+<div class="grid grid-cols-7 gap-1 text-center font-body-sm text-xs" id="dep-calendar-grid"><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">26</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">27</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">28</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">29</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">30</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">31</span><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">1</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">2</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">3</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">4</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">5</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">6</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">7</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">8</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">9</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">10</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">11</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">12</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">13</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 is-departure bg-primary text-[#0f0c1b] font-bold shadow-[0_0_12px_rgba(255,196,103,0.7)] ring-2 ring-[#e6a73c]">14</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 bg-[#e6a73c]/15 text-primary border border-[#e6a73c]/30 hover:bg-[#e6a73c]/30">15</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 bg-[#e6a73c]/15 text-primary border border-[#e6a73c]/30 hover:bg-[#e6a73c]/30">16</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 bg-[#e6a73c]/15 text-primary border border-[#e6a73c]/30 hover:bg-[#e6a73c]/30">17</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 bg-[#e6a73c]/15 text-primary border border-[#e6a73c]/30 hover:bg-[#e6a73c]/30">18</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 bg-[#e6a73c]/15 text-primary border border-[#e6a73c]/30 hover:bg-[#e6a73c]/30">19</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 bg-[#e6a73c]/15 text-primary border border-[#e6a73c]/30 hover:bg-[#e6a73c]/30">20</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 is-return bg-secondary text-[#0f0c1b] font-bold shadow-[0_0_12px_rgba(255,181,156,0.7)] ring-2 ring-secondary">21</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">22</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">23</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">24</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">25</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">26</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">27</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">28</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">29</button><button type="button" class="cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40">30</button><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">1</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">2</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">3</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">4</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">5</span><span class="py-1.5 opacity-25 text-[#c8c2b5] select-none">6</span></div>
+</div>
+<!-- Sanctuary Return Calendar Card -->
+
+</div>
+<!-- Royal Endowment Fee Card & Proceed Button -->
+<div class="flex flex-col gap-3 bg-[#242033] p-4 sm:p-5 rounded-xl border border-[#e6a73c]/30 mt-2">
+<a href="curated.html" class="w-full mt-2 py-3.5 px-6 rounded-xl bg-primary text-[#0f0c1b] font-title-md text-sm font-bold tracking-wide hover:bg-primary-fixed-dim transition-colors flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(230,167,60,0.3)] cursor-pointer no-underline">
+<span class="">Proceed to Custom Itinerary &amp; Dates</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- SECTION 6: Duration & Season Picker -->
+<!-- Royal Endowment Estimate Card & CTA -->
+</form>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#141120]/95 backdrop-blur-xl border-t border-[#e6a73c]/20 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center h-16 px-4 max-w-lg mx-auto">
+<a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-14 text-[#c8c2b5] hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="font-label-sm text-[10px] tracking-wider">Hub</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-14 text-[#c8c2b5] hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-[22px]">landscape</span>
+<span class="font-label-sm text-[10px] tracking-wider">Trips</span>
+</a>
+<a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-14 text-primary font-bold" href="#">
+<span class="material-symbols-outlined text-[22px] filter drop-shadow-[0_0_6px_rgba(245,200,103,0.6)]">domain</span>
+<span class="font-label-sm text-[10px] tracking-wider">Host</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 min-w-[56px] h-14 text-[#c8c2b5] hover:text-primary transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+<span class="font-label-sm text-[10px] tracking-wider">Team Devi</span>
+</a>
+</div>
+</nav>
+<!-- Dynamic Calendar Interactivity Script & Amenities Counter -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ================= Question 4 Amenities Logic ================= */
+      const container = document.getElementById('amenities-container');
+      if (container) {
+        const counterText = document.getElementById('amenity-counter-text');
+        const limitNotice = document.getElementById('amenity-limit-notice');
+        const checkboxes = container.querySelectorAll('.amenity-checkbox');
+
+        function updateAmenityStates() {
+          const checkedBoxes = container.querySelectorAll('.amenity-checkbox:checked');
+          const count = checkedBoxes.length;
+
+          if (counterText) counterText.textContent = `Selected: ${count} / 3 Max`;
+
+          if (limitNotice) {
+            if (count >= 3) {
+              limitNotice.classList.remove('hidden');
+              limitNotice.classList.add('flex');
+            } else {
+              limitNotice.classList.add('hidden');
+              limitNotice.classList.remove('flex');
+            }
+          }
+
+          checkboxes.forEach(cb => {
+            const card = cb.closest('.amenity-card');
+            const icon = card.querySelector('.amenity-icon');
+            const label = card.querySelector('.amenity-label');
+
+            if (cb.checked) {
+              card.classList.remove('bg-[#242033]', 'border-[#e6a73c]/20', 'opacity-60');
+              card.classList.add('bg-[#2b263d]', 'border-2', 'border-primary/80', 'shadow-[0_0_15px_rgba(230,167,60,0.18)]');
+              icon.classList.remove('text-secondary');
+              icon.classList.add('text-primary');
+              label.classList.remove('text-[#c8c2b5]', 'font-normal');
+              label.classList.add('text-primary', 'font-bold');
+              cb.disabled = false;
+            } else {
+              card.classList.remove('bg-[#2b263d]', 'border-2', 'border-primary/80', 'shadow-[0_0_15px_rgba(230,167,60,0.18)]');
+              card.classList.add('bg-[#242033]', 'border-[#e6a73c]/20');
+              icon.classList.remove('text-primary');
+              icon.classList.add('text-secondary');
+              label.classList.remove('text-primary', 'font-bold');
+              label.classList.add('text-[#c8c2b5]');
+
+              if (count >= 3) {
+                card.classList.add('opacity-60');
+                cb.disabled = true;
+              } else {
+                card.classList.remove('opacity-60');
+                cb.disabled = false;
+              }
+            }
+          });
+        }
+
+        checkboxes.forEach(cb => {
+          cb.addEventListener('change', (e) => {
+            const checkedBoxes = container.querySelectorAll('.amenity-checkbox:checked');
+            if (checkedBoxes.length > 3) {
+              e.target.checked = false;
+            }
+            updateAmenityStates();
+          });
+        });
+
+        updateAmenityStates();
+      }
+
+      /* ================= Section 7 Dynamic Calendar Logic ================= */
+      const MONTH_NAMES = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const DAY_NAMES_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const MONTH_NAMES_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+      // Calendar state initialized with November 2025 and default selection (14th to 21st Nov 2025)
+      let depViewYear = 2025;
+      let depViewMonth = 10; // 0-indexed (10 = November)
+      let retViewYear = 2025;
+      let retViewMonth = 10;
+
+      let selectedDeparture = new Date(2025, 10, 14);
+      let selectedReturn = new Date(2025, 10, 21);
+
+      // DOM Elements
+      const depGrid = document.getElementById('dep-calendar-grid');
+      const retGrid = document.getElementById('ret-calendar-grid');
+      const depMonthHeading = document.getElementById('dep-month-heading');
+      const retMonthHeading = document.getElementById('ret-month-heading');
+      const depMiniTag = document.getElementById('dep-mini-month-tag');
+      const retMiniTag = document.getElementById('ret-mini-month-tag');
+      const depSummary = document.getElementById('departure-summary-text');
+      const retSummary = document.getElementById('return-summary-text');
+      const totalSpanBadge = document.getElementById('total-span-badge');
+
+      function formatDateSummary(date) {
+        if (!date) return "Select date";
+        const dayName = DAY_NAMES_SHORT[date.getDay()];
+        const day = date.getDate();
+        const monthName = MONTH_NAMES_SHORT[date.getMonth()];
+        const year = date.getFullYear();
+        return `${dayName}, ${day} ${monthName} ${year}`;
+      }
+
+      function isSameDate(d1, d2) {
+        if (!d1 || !d2) return false;
+        return d1.getFullYear() === d2.getFullYear() &&
+               d1.getMonth() === d2.getMonth() &&
+               d1.getDate() === d2.getDate();
+      }
+
+      function isInRange(d, start, end) {
+        if (!start || !end) return false;
+        const time = d.getTime();
+        const startTime = new Date(start.getFullYear(), start.getMonth(), start.getDate()).getTime();
+        const endTime = new Date(end.getFullYear(), end.getMonth(), end.getDate()).getTime();
+        if (startTime > endTime) {
+          return time > endTime && time < startTime;
+        }
+        return time > startTime && time < endTime;
+      }
+
+      function updateSummaries() {
+        if (depSummary) depSummary.textContent = formatDateSummary(selectedDeparture);
+        if (retSummary) retSummary.textContent = formatDateSummary(selectedReturn);
+
+        if (totalSpanBadge) {
+          if (selectedDeparture && selectedReturn) {
+            let t1 = selectedDeparture.getTime();
+            let t2 = selectedReturn.getTime();
+            let diffDays = Math.round(Math.abs(t2 - t1) / (1000 * 60 * 60 * 24));
+            if (diffDays === 0) {
+              totalSpanBadge.textContent = `Total Span: Same Day Visit`;
+            } else {
+              const nights = diffDays;
+              const days = diffDays + 1;
+              totalSpanBadge.textContent = `Total Span: ${nights} Night${nights > 1 ? 's' : ''} / ${days} Days`;
+            }
+          } else if (selectedDeparture) {
+            totalSpanBadge.textContent = `Total Span: Departure chosen (Pick return)`;
+          } else if (selectedReturn) {
+            totalSpanBadge.textContent = `Total Span: Return chosen (Pick departure)`;
+          } else {
+            totalSpanBadge.textContent = `Total Span: Please select dates`;
+          }
+        }
+      }
+
+      function renderCalendar(type) {
+        const isDep = type === 'dep';
+        const year = isDep ? depViewYear : retViewYear;
+        const month = isDep ? depViewMonth : retViewMonth;
+        const grid = isDep ? depGrid : retGrid;
+        const heading = isDep ? depMonthHeading : retMonthHeading;
+        const miniTag = isDep ? depMiniTag : retMiniTag;
+
+        const monthTitle = `${MONTH_NAMES[month]} ${year}`;
+        if (heading) heading.textContent = monthTitle;
+        if (miniTag) miniTag.textContent = monthTitle;
+
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        // First day of current month & number of days in month
+        const firstDayIndex = new Date(year, month, 1).getDay(); // 0 = Sun
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // Days in previous month to pad start
+        const prevMonthLastDay = new Date(year, month, 0).getDate();
+
+        // Leading days from previous month
+        for (let i = firstDayIndex - 1; i >= 0; i--) {
+          const span = document.createElement('span');
+          span.className = 'py-1.5 opacity-25 text-[#c8c2b5] select-none';
+          span.textContent = prevMonthLastDay - i;
+          grid.appendChild(span);
+        }
+
+        // Days in current month
+        for (let day = 1; day <= daysInMonth; day++) {
+          const cellDate = new Date(year, month, day);
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = day;
+
+          const isDepartureDate = isSameDate(cellDate, selectedDeparture);
+          const isReturnDate = isSameDate(cellDate, selectedReturn);
+          const inRange = isInRange(cellDate, selectedDeparture, selectedReturn);
+
+          let classList = "cal-day-btn py-1.5 rounded-lg font-medium transition-all duration-200 ";
+
+          if (isDepartureDate) {
+            classList += "is-departure bg-primary text-[#0f0c1b] font-bold shadow-[0_0_12px_rgba(255,196,103,0.7)] ring-2 ring-[#e6a73c]";
+          } else if (isReturnDate) {
+            classList += "is-return bg-secondary text-[#0f0c1b] font-bold shadow-[0_0_12px_rgba(255,181,156,0.7)] ring-2 ring-secondary";
+          } else if (inRange) {
+            classList += "bg-[#e6a73c]/15 text-primary border border-[#e6a73c]/30 hover:bg-[#e6a73c]/30";
+          } else {
+            classList += "text-[#c8c2b5] hover:bg-[#e6a73c]/20 hover:text-primary hover:border hover:border-[#e6a73c]/40";
+          }
+
+          btn.className = classList;
+
+          btn.addEventListener('click', () => {
+            if (isDep) {
+              if (isSameDate(selectedDeparture, cellDate)) {
+                selectedDeparture = null; // Toggle unselect
+              } else {
+                selectedDeparture = new Date(year, month, day);
+              }
+            } else {
+              if (isSameDate(selectedReturn, cellDate)) {
+                selectedReturn = null; // Toggle unselect
+              } else {
+                selectedReturn = new Date(year, month, day);
+              }
+            }
+            updateSummaries();
+            renderBothCalendars();
+          });
+
+          grid.appendChild(btn);
+        }
+
+        // Trailing days to fill the 7-column grid cleanly
+        const totalCells = firstDayIndex + daysInMonth;
+        const remainder = totalCells % 7;
+        if (remainder !== 0) {
+          const nextDays = 7 - remainder;
+          for (let d = 1; d <= nextDays; d++) {
+            const span = document.createElement('span');
+            span.className = 'py-1.5 opacity-25 text-[#c8c2b5] select-none';
+            span.textContent = d;
+            grid.appendChild(span);
+          }
+        }
+      }
+
+      function renderBothCalendars() {
+        renderCalendar('dep');
+        renderCalendar('ret');
+      }
+
+      // Previous / Next Month Event Listeners
+      const depPrev = document.getElementById('dep-prev-month');
+      const depNext = document.getElementById('dep-next-month');
+      const retPrev = document.getElementById('ret-prev-month');
+      const retNext = document.getElementById('ret-next-month');
+
+      if (depPrev) {
+        depPrev.addEventListener('click', () => {
+          depViewMonth--;
+          if (depViewMonth < 0) {
+            depViewMonth = 11;
+            depViewYear--;
+          }
+          renderCalendar('dep');
+        });
+      }
+
+      if (depNext) {
+        depNext.addEventListener('click', () => {
+          depViewMonth++;
+          if (depViewMonth > 11) {
+            depViewMonth = 0;
+            depViewYear++;
+          }
+          renderCalendar('dep');
+        });
+      }
+
+      if (retPrev) {
+        retPrev.addEventListener('click', () => {
+          retViewMonth--;
+          if (retViewMonth < 0) {
+            retViewMonth = 11;
+            retViewYear--;
+          }
+          renderCalendar('ret');
+        });
+      }
+
+      if (retNext) {
+        retNext.addEventListener('click', () => {
+          retViewMonth++;
+          if (retViewMonth > 11) {
+            retViewMonth = 0;
+            retViewYear++;
+          }
+          renderCalendar('ret');
+        });
+      }
+
+      // Initial execution
+      updateSummaries();
+      renderBothCalendars();
+    });
+  </script>
+
+
+
+
+
+
+
+<style id="dharohar-app-nav">
+#dh-nav{position:fixed;right:18px;bottom:18px;z-index:99999;font-family:Arial,sans-serif}
+#dh-nav details{position:relative}
+#dh-nav summary{list-style:none;cursor:pointer;width:48px;height:48px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;background:#c59b27;color:#111127;
+box-shadow:0 8px 30px rgba(0,0,0,.35);font-weight:800;font-size:20px}
+#dh-nav summary::-webkit-details-marker{display:none}
+#dh-nav .menu{position:absolute;right:0;bottom:58px;width:210px;padding:8px;border-radius:14px;
+background:rgba(20,20,38,.97);border:1px solid rgba(197,155,39,.35);box-shadow:0 15px 45px rgba(0,0,0,.4)}
+#dh-nav a{display:block;color:#f6f0df;text-decoration:none;padding:10px 12px;border-radius:9px;font:600 13px/1.2 Arial,sans-serif}
+#dh-nav a:hover{background:rgba(197,155,39,.16);color:#e5a93c}
+</style>
+<div id="dh-nav">
+<details>
+<summary aria-label="Open Dharohar navigation">☰</summary>
+<div class="menu">
+<a href="../index.html">⌂ Home</a>
+<a href="../signin/index.html">Sign in / Sign up</a>
+<a href="../hub/index.html">Dharohar Hub</a>
+<a href="../quiz/index.html">Cultural Quiz</a>
+<a href="../sanctuaries/index.html">Haveli Sanctuaries</a>
+<a href="../booking/index.html">Rawla Mandawa</a>
+<a href="../plan/index.html">Plan a Passage</a>
+<a href="../register/index.html">Register Residence</a>
+<a href="../language/index.html">Language</a>
+<a href="../about/index.html">About Dharohar</a>
+</div>
+</details>
+</div>
+
+</body></html>
