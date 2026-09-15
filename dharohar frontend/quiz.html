@@ -749,4 +749,366 @@
             story: "The secret to an authentic Pradhaman is cooking the rice ada flakes in first, second, and third pressings of fresh coconut milk."
           }
         ]
-      },
+      }
+    };
+
+    /* =========================================================
+       DHAROHAR - FIXED INTERACTIVE ENGINE
+       The original file stopped in the middle of the JavaScript
+       object, so the browser never received a valid JS program.
+       ========================================================= */
+
+    // Add the two regions that already have cards in the HTML.
+    // They use the same 10-question structure as the other regions.
+    CULTURAL_QUIZ_STORE.awadh = {
+      name: "Varanasi & Awadh",
+      hindi: "Ganga, Tehzeeb & Nawabi Heritage",
+      honor: "Ganga & Tehzeeb Scholar",
+      questions: [
+        {category:"HOLY CITY GREETING",title:"Which greeting is commonly associated with respectful interaction in Varanasi and Awadh?",hint:"A respectful greeting used widely across North India.",options:["Namaste","Vanakkam","Sat Sri Akal","Kem Cho"],correctAnswer:"Namaste",story:"Namaste is a widely used Indian greeting expressing respect and welcome."},
+        {category:"AWADHI CUISINE",title:"Which famous Awadhi kebab is traditionally known for its exceptionally soft texture?",hint:"A signature dish associated with Lucknow.",options:["Galouti Kebab","Seekh Kebab","Shami Kebab","Dahi Kebab"],correctAnswer:"Galouti Kebab",story:"Galouti kebabs are a celebrated part of Lucknow's Awadhi culinary tradition."},
+        {category:"MUSIC HERITAGE",title:"Which instrument is especially associated with the musical traditions of Varanasi?",hint:"A reed instrument often heard at ceremonies.",options:["Shehnai","Kamaicha","Santoor","Ghatam"],correctAnswer:"Shehnai",story:"Varanasi is strongly associated with the shehnai and the legendary musician Bismillah Khan."},
+        {category:"RIVER CULTURE",title:"Which river is at the heart of Varanasi's famous ghats?",hint:"The sacred river flowing through the city.",options:["Ganga","Yamuna","Narmada","Godavari"],correctAnswer:"Ganga",story:"The Ganga is central to Varanasi's religious, cultural and everyday life."},
+        {category:"LANGUAGE & ETIQUETTE",title:"What word best describes the refined manners traditionally associated with Lucknow?",hint:"A famous concept of courtesy and refinement.",options:["Tehzeeb","Jugaad","Adda","Balle Balle"],correctAnswer:"Tehzeeb",story:"Lucknowi tehzeeb is celebrated for courtesy, graceful speech and hospitality."},
+        {category:"BANARASI TEXTILES",title:"Which luxurious textile is Varanasi especially famous for?",hint:"A richly woven fabric often decorated with zari.",options:["Banarasi Silk","Kasavu","Phulkari","Bandhani"],correctAnswer:"Banarasi Silk",story:"Banarasi silk is renowned for intricate weaving and zari work."},
+        {category:"SACRED CEREMONY",title:"What evening ceremony is performed at the ghats of Varanasi with lamps and devotional music?",hint:"It takes place after sunset.",options:["Ganga Aarti","Bihu","Garba","Baisakhi"],correctAnswer:"Ganga Aarti",story:"The Ganga Aarti is a major devotional ceremony performed at several Varanasi ghats."},
+        {category:"FAMOUS PAN",title:"Which iconic preparation is strongly associated with Banaras?",hint:"A betel-leaf preparation.",options:["Banarasi Paan","Kolkata Paan","Meetha Paan only","Awadhi Paan"],correctAnswer:"Banarasi Paan",story:"Banarasi paan is a famous part of the city's food and hospitality culture."},
+        {category:"FESTIVAL LIGHTS",title:"Which festival is celebrated especially grandly at the ghats with thousands of lamps?",hint:"The festival of lights.",options:["Diwali","Onam","Lohri","Baisakhi"],correctAnswer:"Diwali",story:"Diwali brings spectacular illumination to Varanasi and its riverfront."},
+        {category:"LUCKNOW FOOD",title:"Which rice dish is a celebrated part of Awadhi cuisine?",hint:"Fragrant rice cooked with spices and meat or vegetables.",options:["Awadhi Biryani","Pongal","Puliyodarai","Poha"],correctAnswer:"Awadhi Biryani",story:"Awadhi cuisine is famous for fragrant, gently spiced rice dishes and slow cooking."}
+      ]
+    };
+
+    CULTURAL_QUIZ_STORE.bengal = {
+      name: "Bengal & East",
+      hindi: "Pujo, Adda & Sweet Traditions",
+      honor: "Bengal Culture Scholar",
+      questions: [
+        {category:"SWEET BENGALI PHRASE",title:"Which phrase means 'How are you?' in everyday Bengali conversation?",hint:"A very common friendly question.",options:["Kemon Acho?","Ki Korcho?","Kothay Jachho?","Bhalo Achen?"],correctAnswer:"Kemon Acho?",story:"Kemon acho? is an informal Bengali way of asking how someone is doing."},
+        {category:"ICONIC SWEET",title:"Which soft, syrupy Bengali sweet is made from chhena?",hint:"A famous round white sweet.",options:["Rosogolla","Ghevar","Petha","Mysore Pak"],correctAnswer:"Rosogolla",story:"Rosogolla is one of Bengal's best-known sweets, made from chhena and cooked in syrup."},
+        {category:"FESTIVAL TRADITION",title:"Which festival is famously celebrated with elaborate Durga idols across Bengal?",hint:"The grand autumn festival dedicated to Goddess Durga.",options:["Durga Puja","Onam","Lohri","Baisakhi"],correctAnswer:"Durga Puja",story:"Durga Puja is a defining cultural celebration of Bengal."},
+        {category:"SWEET DESSERT",title:"Which Bengali dessert is made from fermented sweetened milk and is often served chilled?",hint:"A creamy, caramelized milk dessert.",options:["Mishti Doi","Kheer","Payasam","Shrikhand"],correctAnswer:"Mishti Doi",story:"Mishti doi is a traditional Bengali sweet yogurt known for its caramel-like sweetness."},
+        {category:"CULTURAL CHAT",title:"What Bengali word describes relaxed, lively social conversation?",hint:"A beloved part of Kolkata's social culture.",options:["Adda","Tehzeeb","Jaago","Pookkalam"],correctAnswer:"Adda",story:"Adda describes informal, lively conversation among friends and communities."},
+        {category:"CLASSICAL MUSIC",title:"Which instrument is traditionally associated with many Bengali musical performances?",hint:"A plucked string instrument.",options:["Dotara","Dhol","Shehnai","Kamaicha"],correctAnswer:"Dotara",story:"The dotara is an important folk instrument in Bengal and eastern India."},
+        {category:"FOLK ART",title:"Which folk painting tradition is associated with Bengal?",hint:"Traditional scroll paintings tell stories through images.",options:["Pattachitra","Madhubani","Phad","Warli"],correctAnswer:"Pattachitra",story:"Bengal has a strong patua scroll-painting tradition, commonly associated with Pattachitra."},
+        {category:"FAMOUS FOOD",title:"Which fish is especially important in Bengali cuisine?",hint:"A freshwater fish often cooked with mustard.",options:["Hilsa","Rohu only","Pomfret","Sardine"],correctAnswer:"Hilsa",story:"Hilsa is deeply associated with Bengali cuisine and is often prepared with mustard."},
+        {category:"LANGUAGE",title:"Which word can be used as a friendly Bengali greeting meaning 'hello'?",hint:"A simple everyday greeting.",options:["Nomoshkar","Sat Sri Akal","Vanakkam","Khamma Ghani"],correctAnswer:"Nomoshkar",story:"Nomoshkar is a respectful Bengali greeting."},
+        {category:"PUJO TRADITION",title:"What sweet is commonly offered during Bengali festivals and celebrations?",hint:"A syrupy milk-based sweet.",options:["Sandesh","Ghevar","Pazham Pori","Pinni"],correctAnswer:"Sandesh",story:"Sandesh is a classic Bengali sweet made primarily from chhena."}
+      ]
+    };
+
+    const QUIZ_TIME = 20;
+    let currentRegion = null;
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let correctCount = 0;
+    let streak = 0;
+    let timer = null;
+    let timeLeft = QUIZ_TIME;
+    let answered = false;
+
+    const $ = (id) => document.getElementById(id);
+
+    function getProgress() {
+      try { return JSON.parse(localStorage.getItem("dharoharProgress") || "{}"); }
+      catch (e) { return {}; }
+    }
+
+    function saveProgress(progress) {
+      localStorage.setItem("dharoharProgress", JSON.stringify(progress));
+    }
+
+    function updateRegionCards() {
+      const progress = getProgress();
+      Object.keys(CULTURAL_QUIZ_STORE).forEach(region => {
+        const card = $("region-card-" + region);
+        if (!card) return;
+        const completed = !!progress[region]?.completed;
+        const badge = $("badge-" + region);
+        const arrow = $("arrow-" + region);
+        const sub = $("sub-" + region);
+        const icon = $("icon-" + region);
+
+        if (completed) {
+          card.classList.add("opacity-60");
+          card.setAttribute("aria-disabled", "true");
+          if (badge) {
+            badge.textContent = "COMPLETED";
+            badge.className = "text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold";
+          }
+          if (arrow) arrow.textContent = "lock";
+          if (sub) sub.innerHTML = '<span class="text-emerald-400">● Completed • Replay locked</span>';
+          if (icon) icon.textContent = "🔒";
+        }
+      });
+
+      updateVoucherBanner();
+    }
+
+    function updateVoucherBanner() {
+      const progress = getProgress();
+      let latest = null;
+      Object.values(progress).forEach(p => {
+        if (p?.voucherCode && p?.completed) latest = p;
+      });
+      const banner = $("active-voucher-banner");
+      if (!banner) return;
+      if (!latest) {
+        banner.classList.add("hidden");
+        return;
+      }
+      banner.classList.remove("hidden");
+      $("banner-voucher-code").textContent = latest.voucherCode;
+      $("banner-voucher-pct").textContent = latest.voucher + "% OFF";
+    }
+
+    function handleRegionCardClick(region) {
+      const data = CULTURAL_QUIZ_STORE[region];
+      if (!data) {
+        alert("This region is not available yet.");
+        return;
+      }
+      const progress = getProgress();
+      if (progress[region]?.completed) {
+        alert("This regional quiz has already been completed. Replay is locked.");
+        return;
+      }
+      currentRegion = region;
+      currentQuestionIndex = 0;
+      score = 0;
+      correctCount = 0;
+      streak = 0;
+      $("view-region-select").classList.add("hidden");
+      $("view-quiz-arena").classList.remove("hidden");
+      $("view-quiz-arena").classList.add("flex");
+      $("hud-region-name").textContent = data.name;
+      $("hud-sub-realm").textContent = data.hindi;
+      renderQuestion();
+    }
+
+    function returnToRegionSelect() {
+      stopTimer();
+      $("modal-feedback").classList.add("hidden");
+      $("modal-feedback").classList.remove("flex");
+      $("modal-podium").classList.add("hidden");
+      $("modal-podium").classList.remove("flex");
+      $("view-quiz-arena").classList.add("hidden");
+      $("view-quiz-arena").classList.remove("flex");
+      $("view-region-select").classList.remove("hidden");
+      updateRegionCards();
+      window.scrollTo(0, 0);
+    }
+
+    function renderQuestion() {
+      const q = CULTURAL_QUIZ_STORE[currentRegion].questions[currentQuestionIndex];
+      answered = false;
+      timeLeft = QUIZ_TIME;
+      $("hud-q-number").textContent = `Question ${currentQuestionIndex + 1} of 10`;
+      $("hud-score").textContent = score;
+      $("hud-streak").textContent = `${streak} STREAK`;
+      $("hud-discount").textContent = `VOUCHER: ${correctCount * 2}% OFF`;
+      $("q-category-tag").textContent = q.category;
+      $("q-question-text").textContent = q.title;
+      $("q-hint-caption").textContent = q.hint;
+      $("timer-number").textContent = timeLeft;
+      $("timer-status-text").textContent = "Take your time";
+      $("quiz-progress-bar").style.width = `${((currentQuestionIndex + 1) / 10) * 100}%`;
+
+      q.options.forEach((option, i) => {
+        const tile = $("tile-" + i + "-text");
+        if (tile) tile.textContent = option;
+      });
+
+      document.querySelectorAll(".option-tile").forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove("opacity-50", "pointer-events-none");
+      });
+
+      // A broken remote image should never stop the quiz.
+      const img = $("q-hero-img");
+      img.onerror = () => {
+        img.style.display = "none";
+      };
+      img.style.display = "block";
+
+      startTimer();
+    }
+
+    function startTimer() {
+      stopTimer();
+      updateTimerRing();
+      timer = setInterval(() => {
+        timeLeft--;
+        $("timer-number").textContent = timeLeft;
+        updateTimerRing();
+        if (timeLeft <= 5) $("timer-status-text").textContent = "Hurry!";
+        if (timeLeft <= 0) {
+          stopTimer();
+          handleOptionChosen(-1);
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function updateTimerRing() {
+      const circle = $("timer-ring-circle");
+      if (!circle) return;
+      const circumference = 94.2;
+      circle.style.strokeDashoffset = String(circumference * (1 - timeLeft / QUIZ_TIME));
+    }
+
+    function handleOptionChosen(index) {
+      if (answered) return;
+      answered = true;
+      stopTimer();
+
+      const q = CULTURAL_QUIZ_STORE[currentRegion].questions[currentQuestionIndex];
+      const correct = index >= 0 && q.options[index] === q.correctAnswer;
+
+      if (correct) {
+        score += 10;
+        correctCount++;
+        streak++;
+      } else {
+        streak = 0;
+      }
+
+      document.querySelectorAll(".option-tile").forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add("opacity-50");
+      });
+
+      showFeedback(q, correct, index);
+    }
+
+    function showFeedback(q, correct, selectedIndex) {
+      const modal = $("modal-feedback");
+      $("modal-q-badge").textContent = `QUESTION ${currentQuestionIndex + 1} OF 10`;
+      $("modal-earned-pts").textContent = correct ? "+10 PTS" : "+0 PTS";
+      $("modal-earned-voucher").textContent = correct ? "+2% VOUCHER UNLOCKED" : "+0% VOUCHER";
+      $("modal-reveal-text").textContent = q.correctAnswer;
+      $("modal-cultural-story").textContent = q.story;
+      $("modal-tagline").textContent = correct ? "CORRECT!" : (selectedIndex === -1 ? "TIME'S UP" : "GOOD TRY");
+      $("modal-heading").textContent = correct ? "YOU KNOW YOUR HERITAGE" : "HERE'S THE TRADITION";
+      $("modal-tagline").className = `text-xs uppercase tracking-widest font-bold mb-1 ${correct ? "text-emerald-400" : "text-tile-red"}`;
+      $("modal-heading").className = `font-serif text-2xl sm:text-3xl font-extrabold mb-2 ${correct ? "text-emerald-400" : "text-tile-red"}`;
+      $("modal-icon-symbol").textContent = correct ? "check_circle" : "cancel";
+      $("modal-icon-circle").className = `w-18 h-18 p-4 rounded-full flex items-center justify-center mb-3 shadow-2xl border ${correct ? "bg-emerald-500/30 text-emerald-400 border-emerald-500/50" : "bg-tile-red/30 text-tile-red border-tile-red/50"}`;
+
+      const streakNote = $("modal-streak-note");
+      if (correct && streak > 1) {
+        streakNote.classList.remove("hidden");
+        $("modal-streak-str").textContent = `🔥 ${streak} ANSWERS IN A ROW!`;
+      } else {
+        streakNote.classList.add("hidden");
+      }
+
+      $("modal-bottom-status").textContent =
+        `Current Discount: ${correctCount * 2}% OFF (Answer all 10 to unlock up to 20% DHAROHAR voucher!)`;
+
+      $("btn-modal-next-text").textContent =
+        currentQuestionIndex === 9 ? "SEE FINAL REWARD" : "NEXT QUESTION";
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      requestAnimationFrame(() => {
+        modal.classList.remove("opacity-0");
+      });
+    }
+
+    function closeFeedback() {
+      const modal = $("modal-feedback");
+      modal.classList.add("opacity-0");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }, 200);
+    }
+
+    function goToNextQuestion() {
+      closeFeedback();
+      setTimeout(() => {
+        if (currentQuestionIndex < 9) {
+          currentQuestionIndex++;
+          renderQuestion();
+        } else {
+          finishQuiz();
+        }
+      }, 220);
+    }
+
+    function finishQuiz() {
+      stopTimer();
+      const voucher = correctCount * 2;
+      const code = `DHAROHAR${voucher}`;
+      const oldProgress = getProgress();
+      const previousVoucher = Object.values(oldProgress).find(p => p?.voucherCode)?.voucherCode || null;
+
+      oldProgress[currentRegion] = {
+        completed: true,
+        score,
+        correctCount,
+        voucher,
+        voucherCode: code,
+        completedAt: new Date().toISOString()
+      };
+      saveProgress(oldProgress);
+
+      $("podium-region-title").textContent = `${CULTURAL_QUIZ_STORE[currentRegion].name} Champion`;
+      $("podium-final-score").textContent = `${score}/100`;
+      $("podium-final-accuracy").textContent = `${correctCount}/10`;
+      $("podium-final-voucher").textContent = `${voucher}%`;
+      $("podium-voucher-badge").textContent = `${voucher}% OFF`;
+      $("podium-promo-code").textContent = code;
+      $("podium-honor-pill").textContent = CULTURAL_QUIZ_STORE[currentRegion].honor;
+
+      const oldCard = $("superseded-voucher-card");
+      if (previousVoucher && previousVoucher !== code) {
+        oldCard.classList.remove("hidden");
+        $("superseded-code").textContent = previousVoucher;
+      } else {
+        oldCard.classList.add("hidden");
+      }
+
+      const podium = $("modal-podium");
+      podium.classList.remove("hidden");
+      podium.classList.add("flex");
+      requestAnimationFrame(() => podium.classList.remove("opacity-0"));
+      updateVoucherBanner();
+    }
+
+    async function copyVoucherCode(button) {
+      const code = $("podium-promo-code").textContent;
+      try {
+        await navigator.clipboard.writeText(code);
+        button.textContent = "COPIED!";
+        setTimeout(() => button.textContent = "COPY", 1500);
+      } catch (e) {
+        // Clipboard APIs may be blocked when opened directly as a file.
+        const input = document.createElement("input");
+        input.value = code;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+        button.textContent = "COPIED!";
+        setTimeout(() => button.textContent = "COPY", 1500);
+      }
+    }
+
+    // Start on the region selector instead of opening the quiz immediately.
+    document.addEventListener("DOMContentLoaded", () => {
+      $("view-quiz-arena").classList.add("hidden");
+      $("view-quiz-arena").classList.remove("flex");
+      $("view-region-select").classList.remove("hidden");
+      updateRegionCards();
+    });
+
+  </script>
+</body>
+</html>
